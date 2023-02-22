@@ -1,6 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+import axios from 'axios'
 import leftArrow from '../../assets/img/leftArrow.png'
 import rightArrow from '../../assets/img/rightArrow.png'
 import leftArrowBlack from '../../assets/img/arrowLeftBlack.png'
@@ -12,14 +14,22 @@ import { AuthContext } from '../../context/authContext'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
-export default function SwiperComponent({ theme }) {
+export default function SwiperComponent({ theme, users, setUsers }) {
+  const { user, setUser } = useContext(AuthContext)
+
   const navigate = useNavigate()
 
   const handleClick = () => {
     navigate('/:id')
   }
 
-  const { user } = useContext(AuthContext)
+  // useEffect(() => {
+  //   getPosts(setPosts)
+  // }, [])
+  // return (
+  //   <div className='post-container'>
+  //     {posts.map((post) => (
+  //       <Post theme={theme} {...post} key={`post_${post._id}`} />
 
   function AllUsers() {
     const [users, setUsers] = useState([]);
@@ -54,6 +64,18 @@ export default function SwiperComponent({ theme }) {
         }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
+        // breakpoints={{
+        //   // when window width is >= 640px
+        //   640: {
+        //     width: 640,
+        //     slidesPerView: 2,
+        //   },
+        //   // when window width is >= 768px
+        //   768: {
+        //     width: 768,
+        //     slidesPerView: 4,
+        //   },
+        // }}
       >
         
         {users.length > 0 &&
