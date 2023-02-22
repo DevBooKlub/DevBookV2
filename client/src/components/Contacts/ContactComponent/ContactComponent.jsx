@@ -38,7 +38,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
         <>
           <img
             className='contact-img borderImg'
-            src={'http://localhost:5555/' + friend.userPic}
+            src={`${__URL_BASE__}${friend.userPic}`}
             alt=''
           />
           <h2 className='contact-name text'>{friend.username}</h2>
