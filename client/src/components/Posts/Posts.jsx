@@ -22,7 +22,13 @@ function Posts({ theme, posts, setPosts }) {
   return (
     <div className='post-container'>
       {posts.map((post) => (
-        <Post theme={theme} {...post} key={`post_${post._id}`} />
+        <Post
+          theme={theme}
+          {...post}
+          key={`post_${post._id}`}
+          setPosts={setPosts}
+          posts={posts}
+        />
       ))}
     </div>
   )
