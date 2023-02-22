@@ -6,7 +6,7 @@ import {
   OrbitControls,
   ContactShadows,
   EnvironmentMap,
-} from "@react-three/drei/";
+} from "@react-three/drei";
 
 
 import { TextureLoader } from "three";
