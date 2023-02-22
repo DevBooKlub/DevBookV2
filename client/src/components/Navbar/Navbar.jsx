@@ -28,7 +28,12 @@ function Navbar({ theme, setTheme }) {
     setIsFocused(true)
   }
   const handleBlur = (e) => {
-    setIsFocused(false)
+    setTimeout(() => {
+      setIsFocused(false)
+    }, 200)
+  }
+  const handleNavigate = (id) => () => {
+    navigate(`/profile/${id}`)
   }
 
   const handleClick = () => {
@@ -80,6 +85,8 @@ function Navbar({ theme, setTheme }) {
                   position: 'absolute',
                   top: '5rem',
                   left: '150%',
+                  zIndex: '100',
+                  listStyle: 'none',
                 }}
               >
                 {user.friends
@@ -88,9 +95,11 @@ function Navbar({ theme, setTheme }) {
                     <li
                       style={{
                         color: 'white',
-                        textDecoration: 'none',
                         fontSize: '2rem',
+                        cursor: 'pointer',
                       }}
+                      // onClick={handleNavigate(friend._id)}
+                      onClick={handleNavigate(friend._id)}
                     >
                       {friend.username}
                     </li>
