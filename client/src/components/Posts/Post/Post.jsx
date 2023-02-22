@@ -31,6 +31,9 @@ function Post({
   friends,
   nickname,
   createdAt,
+  _id: postID,
+  posts,
+  setPosts,
 }) {
   const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -49,11 +52,21 @@ function Post({
     })
     setUser(data.data)
   }
-
+  const handleDelete = async () => {
+    try {
+      const res = await axios(`/api/posts/${postID}`, {
+        method: 'DELETE',
+        withCredentials: true,
+      })
+      if (res.status === 204) setPosts(posts.filter((e) => e._id !== postID))
+    } catch (err) {
+      console.log(err)
+    }
+  }
   const [commentOpen, setCommentOpen] = useState(false)
 
-  const userPicURL = 'http://localhost:5555/' + postAuthor.userPic
-  const postPicURL = 'http://localhost:5555/' + image
+  const userPicURL = `${__URL_BASE__}${postAuthor.userPic}`
+  const postPicURL = `${__URL_BASE__}${image}`
 
   return (
     <div className='single-post-container backgroundInner box-shadow'>
@@ -69,13 +82,14 @@ function Post({
               />
             )}
             <div className='details'>
-              {postAuthor.nickname &&
+              {postAuthor.nickname && (
                 <div className='nickname-container'>
-                  
-                 <span className='nickname textPostNickname'>{`${'@'}${postAuthor.nickname}`}</span>
-                <img src={veryfiedIcon} alt='' />
+                  <span className='nickname textPostNickname'>{`${'@'}${
+                    postAuthor.nickname
+                  }`}</span>
+                  <img src={veryfiedIcon} alt='' />
                 </div>
-              }
+              )}
               <div className='nameDate-container'>
                 <span className='user-name text '>{postAuthor.username}</span>
                 <ul>
@@ -121,7 +135,7 @@ function Post({
             <p className='text'>Share</p>
           </div> */}
           {user._id === postAuthor._id ? (
-            <div className='item'>
+            <div className='item' onClick={handleDelete}>
               <img
                 className={'visible'}
                 src={theme === 'dark' ? deletePostLight : deletePostDark}
