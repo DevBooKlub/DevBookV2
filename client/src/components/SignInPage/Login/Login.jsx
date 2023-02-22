@@ -49,7 +49,6 @@ function Login({ open, setOpen }) {
         axiosConfig
       )
       setUser(data.data)
-      console.log(data.data)
       navigate('/')
     } catch (error) {
       console.log(error)
