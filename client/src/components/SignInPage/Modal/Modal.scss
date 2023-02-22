@@ -10,11 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3;
- 
+  z-index: 30;
 
   .modal-content {
-    background-color:white;
+    background-color: white;
     width: 35%;
     height: 70%;
     position: relative;
@@ -27,7 +26,7 @@
       width: 70%;
 
       // margin-top: 5rem;
-    //   border: 1px solid red;
+      //   border: 1px solid red;
       justify-content: space-around;
 
       .register-text {
@@ -47,7 +46,7 @@
           border: none;
           width: 100%;
           border-bottom: 1px solid $accent;
-            height: 2.5rem;
+          height: 2.5rem;
           &::placeholder {
             color: $colorPlaceholder;
             font-size: 1.1em;
@@ -55,41 +54,30 @@
           }
         }
 
-        .policy-text{
-            align-self: center;
-            font-size: 1.4rem;
-            
+        .policy-text {
+          margin-top: 2rem;
+          align-self: center;
+          font-size: 1.4rem;
         }
 
-        .register-button{
-            align-self: center;
-            margin-top: 1.5rem;
-              width: 156px;
-              height: 4rem;
-              background: none;
-              background-color: $secondary;
-              border: 1px solid $accent;
-              border-radius: 10px;
-              color: $fontColor;
-              cursor: pointer;
-              &:hover {
-                transform: scale(1.1);
-                transition: 0.1s ease-in-out;
-              }
-          }
+        .register-button {
+          align-self: center;
+          margin-top: 1.5rem;
+          width: 156px;
+          height: 4rem;
+
+          border-radius: 10px;
+        }
       }
 
-      .container-signin{
+      .container-signin {
         width: 100%;
 
-        
-        .sign-in-text{
-            font-size: 1.4rem;
-            text-align: center;
+        .sign-in-text {
+          font-size: 1.4rem;
+          text-align: center;
         }
-      
       }
-
     }
 
     .close-icon {
@@ -105,13 +93,12 @@
       }
     }
 
-    .logo-img-modal{
-        top: 1.5rem;
+    .logo-img-modal {
+      top: 1.5rem;
       left: 1.5rem;
-        width: 7rem;
-        position: absolute;
-        cursor: pointer;
-        
+      width: 7rem;
+      position: absolute;
+      cursor: pointer;
     }
   }
 }
