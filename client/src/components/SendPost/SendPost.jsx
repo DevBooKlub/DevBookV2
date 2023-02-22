@@ -86,14 +86,14 @@ function SendPost({ theme, setTheme, setPosts }) {
 
       <div className='type-post-wraper'>
         <div>
-          <input
+          {/* <input
             className='searchbar box-shadow button-TextInput text'
             name='title'
             type='text'
             placeholder='Add post title'
             value={value.title}
             onChange={handleChange}
-          />
+          /> */}
         </div>
         <div className='input-box'>
           <input

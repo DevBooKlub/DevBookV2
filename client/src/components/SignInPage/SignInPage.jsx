@@ -6,6 +6,7 @@ import darkImg from '../../assets/img/darkImg.png'
 import logowhite from '../../assets/img/logowhite.png'
 import lightImg from '../../assets/img/lightImg.png'
 import Modal from './Modal/Modal'
+import Model3d from "../3dModel/Model3d"
 import '../../_reset.scss'
 import Login from './Login/Login'
 
@@ -37,23 +38,35 @@ function SignInPage() {
         {open && (
           <Modal open={open} setOpen={setOpen} closeModal={closeModal} />
         )}
-        <div className='sign-section-left'>
-          <div className='left-section-box'>
-            <img
-              className='logo-img-xl'
-              src={theme === 'dark' ? logowhite : SignUpLogoImgBlack}
-              alt=''
-            />
-            <div className='sign-text-container'>
-              <h2 className='text'>
+         <div className="sign-section-left">
+        <div className="model-background-left"> <Model3d/></div>
+        <img className="logo-img-xl" src={theme === "dark" ? logowhite : SignUpLogoImgBlack} alt="" />
+       <div className="left-section-box">
+           
+            
+            {/* <div className="sign-text-container text">
+              <h2 className="text">
                 Devbook helps you connect with other developers and share
                 information and materials with them.
               </h2>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className='sign-section-right'>
-          <Login open={open} setOpen={setOpen} />
+        <div className="sign-section-middle">
+           <Login theme={theme} open={open} setOpen={setOpen}/>
+           <div className="sign-text-container text">
+              <h2 className="text">
+                Devbook helps you connect with other developers and share
+                information and materials with them.
+              </h2>
+           </div>
+             
+            </div>
+        <div className="sign-section-right">
+        <div className="model-background-right"> <Model3d/></div>
+       
+       
+       
         </div>
       </div>
     </div>
