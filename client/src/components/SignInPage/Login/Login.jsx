@@ -44,7 +44,10 @@ function Login({ open, setOpen }) {
       data,
     }
     try {
-      const { data } = await axios('/api/login', axiosConfig)
+      const { data } = await axios(
+        '/api/login?friends=true&posts=true',
+        axiosConfig
+      )
       setUser(data.data)
       console.log(data.data)
       navigate('/')
