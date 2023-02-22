@@ -29,6 +29,7 @@ function Post({
   desc,
   title,
   friends,
+  nickname,
   createdAt,
 }) {
   const { user, setUser } = useContext(AuthContext)
@@ -68,11 +69,11 @@ function Post({
               />
             )}
             <div className='details'>
-              {
+              {postAuthor.nickname &&
                 <div className='nickname-container'>
-                  {' '}
-                  <span className='nickname textPostNickname'>{`${'@'}${'Nickname here'}`}</span>{' '}
-                  <img src={veryfiedIcon} alt='' />
+                  
+                 <span className='nickname textPostNickname'>{`${'@'}${postAuthor.nickname}`}</span>
+                <img src={veryfiedIcon} alt='' />
                 </div>
               }
               <div className='nameDate-container'>
