@@ -3,6 +3,7 @@ import AppError from '../utils/AppError.js';
 import { verifyFileUpload } from './authN.helpers.js';
 import User from '../models/user.model.js';
 import { deleteReplacedPicture, attachQueries } from './user.helpers.js';
+
 const getAllUsers = catchAsync(async (req, res) => {
     const data = await attachQueries(User.find({}), req.query);
     res.status(200).json({
