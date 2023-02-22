@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './Navbar.scss'
@@ -13,11 +14,27 @@ import { useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
 
 function Navbar({ theme, setTheme }) {
-  const { setUser } = useContext(AuthContext)
+  const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
+
+  const [value, setValue] = useState('')
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleChange = (e) => {
+    setValue(e.target.value)
+  }
+
+  const handleFocus = (e) => {
+    setIsFocused(true)
+  }
+  const handleBlur = (e) => {
+    setIsFocused(false)
+  }
+
   const handleClick = () => {
     navigate('/')
   }
+
   const handleLogout = async () => {
     try {
       await axios('/api/logout', {
@@ -32,6 +49,7 @@ function Navbar({ theme, setTheme }) {
       console.error(err)
     }
   }
+
   return (
     <div className='header'>
       <div className='nav-container '>
@@ -44,12 +62,41 @@ function Navbar({ theme, setTheme }) {
               onClick={handleClick}
             />
           </div>
-          <div className='nav-searchbar-box'>
+          <div className='nav-searchbar-box' style={{ position: 'relative' }}>
             <input
               className='searchbar box-shadow button-TextInput text'
               type='text'
               placeholder='# Exlopre'
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              value={value}
             />
+            {isFocused && (
+              <ul
+                style={{
+                  height: '20rem',
+                  width: '20rem',
+                  position: 'absolute',
+                  top: '5rem',
+                  left: '150%',
+                }}
+              >
+                {user.friends
+                  .filter((e) => e.username.includes(value))
+                  .map((friend) => (
+                    <li
+                      style={{
+                        color: 'white',
+                        textDecoration: 'none',
+                        fontSize: '2rem',
+                      }}
+                    >
+                      {friend.username}
+                    </li>
+                  ))}
+              </ul>
+            )}
           </div>
         </div>
 
@@ -75,14 +122,6 @@ function Navbar({ theme, setTheme }) {
                 />
               )}
             </li>
-
-            {/* <li>
-              <img
-                className="social-icons"
-                src={theme === "dark" ? emailImgLight : emailImg}
-                alt=""
-              />
-            </li> */}
             <li>
               <img
                 onClick={handleLogout}
@@ -91,10 +130,6 @@ function Navbar({ theme, setTheme }) {
                 alt=''
               />
             </li>
-
-            {/* <li>
-              <img className="social-icons" src={theme === "dark" ? messageImgLight : messageImg} alt="" />
-            </li> */}
           </ul>
         </div>
 
