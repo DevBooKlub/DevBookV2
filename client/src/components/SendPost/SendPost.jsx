@@ -16,7 +16,7 @@ function SendPost({ theme, setTheme, setPosts }) {
   const { user } = useContext(AuthContext)
 
   const handleClick = () => {
-    navigate(`/profile/${user._id}`)
+    navigate('/profile/id')
   }
 
   const [inputStr, setInputStr] = useState('')

@@ -35,7 +35,7 @@ function Post({
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/profile/${postAuthor._id}`)
+    navigate('/profile/id')
   }
 
   const isMyFriend = () =>

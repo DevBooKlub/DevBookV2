@@ -16,7 +16,7 @@ function App() {
       <Route path='/' element={<AppWrapper />}>
         <Route path='/' element={<Layout />}>
           <Route path='/' element={<Home />} />
-          <Route path='/profile/:profileID' element={<ProfileLarge />} />
+          <Route path='/profile/:id' element={<ProfileLarge />} />
         </Route>
         <Route path='/login' element={<SignInPage />} />
       </Route>

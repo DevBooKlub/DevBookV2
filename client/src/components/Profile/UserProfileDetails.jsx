@@ -10,7 +10,7 @@ function UserProfileDetails({ theme, setTheme }) {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/profile/${user._id}`)
+    navigate('/profile/id')
   }
 
   const { user } = useContext(AuthContext)

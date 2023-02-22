@@ -10,7 +10,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/profile/${friend._id}`)
+    navigate('/profile/id')
   }
 
   const { setUser } = useContext(AuthContext)

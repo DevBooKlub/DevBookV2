@@ -13,11 +13,12 @@ import { useNavigate } from 'react-router-dom'
 
 export default function SwiperComponent({ theme }) {
   const navigate = useNavigate()
-  const { user } = useContext(AuthContext)
 
   const handleClick = () => {
-    navigate(`/profile/${user._id}`)
+    navigate('/profile/id')
   }
+
+  const { user } = useContext(AuthContext)
 
   return (
     <div className='swiper-container '>

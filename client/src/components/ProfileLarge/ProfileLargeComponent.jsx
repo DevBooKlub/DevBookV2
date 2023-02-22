@@ -1,67 +1,51 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import React, { useContext, useState, useEffect } from 'react'
+import { AuthContext } from '../../context/authContext'
 import './ProfileLargeComponent.scss'
-import Post from '../Posts/Post/Post'
+import { Outlet } from 'react-router-dom'
+import banerImgLight from '../../assets/img/banerLight.jpg'
+import banerImgDark from '../../assets/img/darkBanner.jpg'
+import defaultUserPic from '../../assets/img/pepeUserPic.jpg'
 
-const fetchData = async (profileID, setProfile, navigate, setPosts) => {
-  try {
-    const { data } = await axios(`/api/users/${profileID}?posts=true`, {
-      method: 'GET',
-      withCredentials: true,
-    })
-    setProfile(data.data)
-    setPosts(data.data.posts)
-  } catch (err) {
-    console.error(err)
-    setProfile({})
-    navigate('/')
-  }
-}
+function ProfileLargeComponent({ theme }) {
+  const { user } = useContext(AuthContext)
 
-function ProfileLargeComponent({ theme, setPosts }) {
-  const navigate = useNavigate()
-  const { profileID } = useParams()
-  const [profile, setProfile] = useState({})
-  const { userBanner, userPic, quote, nickname, username } = profile
-
-  useEffect(() => {
-    fetchData(profileID, setProfile, navigate, setPosts)
-  }, [profileID])
-
-  return profile ? (
+  return (
     <div className='ProfileLargeComponent-container backgroundInner '>
       <div className='banner-container'>
-        {userBanner && (
-          <img
-            className='banner-img '
-            src={`${__URL_BASE__}${userBanner}`}
-            alt=''
-          />
-        )}
+        <img
+          className='banner-img '
+          src={
+            user.userBanner
+              ? user.userBanner
+              : theme === 'dark'
+              ? banerImgDark
+              : banerImgLight
+          }
+          alt=''
+        />
 
-        {userPic && (
-          <img
-            className='profile-img borderImg'
-            src={`${__URL_BASE__}${userPic}`}
-            alt=''
-          />
-        )}
+        <img
+          className='profile-img borderImg'
+          src={user.userPic ? user.userPic : defaultUserPic}
+          alt=''
+        />
       </div>
       <div className='user-details-container'>
         <div className='user-name-conatiner'>
-          <h3 className='user-name text'>{username}</h3>
+          <h3 className='user-name text'>{user.username}</h3>
         </div>
         <div className='user-nickname-conatiner text'>
-          <h3 className='user-nickname text'>{nickname}</h3>
+          <h3 className='user-nickname text'>
+            {user.nickname ? user.nickname : <h3>Edit your Nickname</h3>}
+          </h3>
         </div>
         <div className='user-quote-conatiner'>
-          <h3 className='user-quote text'>{quote}</h3>
+          <h3 className='user-quote text'>
+            {user.quote ? user.quote : <h3>Edit your Quote</h3>}
+          </h3>
         </div>
       </div>
     </div>
-  ) : (
-    <div></div>
   )
 }
 
