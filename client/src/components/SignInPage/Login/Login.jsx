@@ -46,6 +46,7 @@ function Login({ open, setOpen }) {
     try {
       const { data } = await axios('/api/login', axiosConfig)
       setUser(data.data)
+      console.log(data.data)
       navigate('/')
     } catch (error) {
       console.log(error)
@@ -53,48 +54,51 @@ function Login({ open, setOpen }) {
   }
 
   return (
-    <div className="sign-form-box backgroundInner box-shadow">
-      <img className="logo-img-login" src={logowhite} alt="" />
-      <h2 className="text">Welcome <br /> Back!</h2>
-      <p className="welcome-p">Please sign-in to continue!</p>
-      <div className="welcome-section-container"> 
-      
-       </div>
-      <form className="form" action="" method="post" onSubmit={handleSubmit}>
+    <div className='sign-form-box backgroundInner box-shadow'>
+      <img className='logo-img-login' src={logowhite} alt='' />
+      <h2 className='text'>
+        Welcome <br /> Back!
+      </h2>
+      <p className='welcome-p'>Please sign-in to continue!</p>
+      <div className='welcome-section-container'></div>
+      <form className='form' action='' method='post' onSubmit={handleSubmit}>
         <input
-          className="border box-shadow button-TextInput text "
-          type="text"
-          placeholder="Login"
-          id="email"
-          name="email"
+          className='border box-shadow button-TextInput text '
+          type='text'
+          placeholder='Login'
+          id='email'
+          name='email'
           required={true}
           onChange={handleChange}
         />
         <input
-          className="border box-shadow button-TextInput text "
-          type="text"
-          placeholder="Password"
-          id="password"
-          name="password"
+          className='border box-shadow button-TextInput text '
+          type='text'
+          placeholder='Password'
+          id='password'
+          name='password'
           required={true}
           onChange={handleChange}
         />
         <button
-          className="button-sign-in border text button-TextInput"
-          type="submit"
-          id="button"
+          className='button-sign-in border text button-TextInput'
+          type='submit'
+          id='button'
         >
           Sign In!
         </button>
       </form>
 
-      <a href="#">
-        <p className="text">Forgot your password?</p>
+      <a href='#'>
+        <p className='text'>Forgot your password?</p>
       </a>
 
-      <div className="border-white border-line"></div>
+      <div className='border-white border-line'></div>
 
-      <button onClick={openModal} className="create-acc-btn border text button-TextInput">
+      <button
+        onClick={openModal}
+        className='create-acc-btn border text button-TextInput'
+      >
         Create Account
       </button>
     </div>
