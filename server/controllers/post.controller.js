@@ -88,14 +88,5 @@ const likePost = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data });
 });
 
-//   const isFriend = friends.find((e) => e._id.toString() === friendID)
-//   isFriend
-//   ? (friends = friends.filter((e) => e._id.toString() !== friendID))
-//   : friends.push(foundFriend._id)
-// const data = await User.findByIdAndUpdate(
-//   userID,
-//   { friends },
-//   { new: true, runValidators: true }
-// )
 
 export { createPost, getAllPosts, getPost, deletePost, likePost };
