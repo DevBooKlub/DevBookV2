@@ -52,5 +52,14 @@ postSchema.pre(/^find/, function (next) {
   this.populate({ path: 'comments' })
   next()
 })
+postSchema.pre(/^find/, function (next) {
+  this.populate({ path: 'likes' })
+  next()
+})
+postSchema.virtual('numberOfLikes').get(function(){
+  return this.likes.length
+})
+
+
 const Post = model('Post', postSchema)
 export { Post as default }
