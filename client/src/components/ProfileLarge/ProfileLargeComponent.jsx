@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './ProfileLargeComponent.scss'
 import Post from '../Posts/Post/Post'
+import banerImgLight from '../../assets/img/banerLight.jpg'
+import banerImgDark from '../../assets/img/darkBanner.jpg'
 
 const fetchData = async (profileID, setProfile, navigate, setPosts) => {
   try {
@@ -30,15 +32,19 @@ function ProfileLargeComponent({ theme, setPosts }) {
   }, [profileID])
 
   return profile ? (
-    <div className='ProfileLargeComponent-container backgroundInner '>
+    <div className='ProfileLargeComponent-container backgroundInner box-shadow'>
       <div className='banner-container'>
-        {userBanner && (
+        
           <img
             className='banner-img '
-            src={`${__URL_BASE__}${userBanner}`}
+            src={ userBanner
+              ? `${__URL_BASE__}${userBanner}`
+              : theme === 'dark'
+              ? banerImgDark
+              : banerImgLight}
             alt=''
           />
-        )}
+        
 
         {userPic && (
           <img

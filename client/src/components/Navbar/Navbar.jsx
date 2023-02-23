@@ -53,6 +53,14 @@ function Navbar({ theme, setTheme }) {
           </div>
         </div>
 
+        <div className='nav-searchbar-box-sm'>
+            <input
+              className='searchbar box-shadow button-TextInput text'
+              type='text'
+              placeholder='# Exlopre'
+            />
+          </div>
+
         <div className='nav-icons-conatiner'>
           <ul>
             <li className='home'>
@@ -99,6 +107,51 @@ function Navbar({ theme, setTheme }) {
         </div>
 
         <div className='currentUser-container'>
+        <div className='nav-icons-conatiner-sm'>
+          <ul>
+            <li className='home'>
+              <img
+                onClick={handleClick}
+                className='social-icons'
+                src={theme === 'dark' ? homeImgoranger : homeImg}
+                alt=''
+              />
+            </li>
+
+            <li>
+              {theme && (
+                <img
+                  onClick={() => {
+                    setTheme(theme === 'light' ? 'dark' : 'light')
+                  }}
+                  className='social-icons'
+                  src={theme === 'dark' ? lightMode : darkMode}
+                />
+              )}
+            </li>
+
+            {/* <li>
+              <img
+                className="social-icons"
+                src={theme === "dark" ? emailImgLight : emailImg}
+                alt=""
+              />
+            </li> */}
+            <li>
+              <img
+                onClick={handleLogout}
+                className='social-icons logout'
+                src={logOutIcon}
+                alt=''
+              />
+            </li>
+
+            {/* <li>
+              <img className="social-icons" src={theme === "dark" ? messageImgLight : messageImg} alt="" />
+            </li> */}
+          </ul>
+        </div>
+
           <CurrentUser />
         </div>
       </div>

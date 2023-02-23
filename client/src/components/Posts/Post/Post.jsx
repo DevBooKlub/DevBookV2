@@ -16,6 +16,7 @@ import removeFriendLight from '../../../assets/img/removeContact.png'
 import deletePostLight from '../../../assets/img/trashLight.png'
 import deletePostDark from '../../../assets/img/trashDark.png'
 import veryfiedIcon from '../../../assets/img/verified.png'
+import likeRedImg from '../../../assets/img/likeRed.png'
 
 import moment from 'moment'
 

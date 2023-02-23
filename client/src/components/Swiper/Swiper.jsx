@@ -22,13 +22,82 @@ export default function SwiperComponent({ theme, users, setUsers }) {
     navigate(`/profile/${user._id}`)
   }
 
-  // useEffect(() => {
-  //   getPosts(setPosts)
-  // }, [])
-  // return (
-  //   <div className='post-container'>
-  //     {posts.map((post) => (
-  //       <Post theme={theme} {...post} key={`post_${post._id}`} />
+
+
+  const allUsers =[
+    <img
+            onClick={handleClick}
+            className='user-img-swiper borderImg'
+            src={user.userPic}
+            alt=''
+          />,<img
+          onClick={handleClick}
+          className='user-img-swiper borderImg'
+          src={user.userPic}
+          alt=''
+        />,<img
+        onClick={handleClick}
+        className='user-img-swiper borderImg'
+        src={user.userPic}
+        alt=''
+      />,<img
+      onClick={handleClick}
+      className='user-img-swiper borderImg'
+      src={user.userPic}
+      alt=''
+    />,<img
+    onClick={handleClick}
+    className='user-img-swiper borderImg'
+    src={user.userPic}
+    alt=''
+  />,<img
+  onClick={handleClick}
+  className='user-img-swiper borderImg'
+  src={user.userPic}
+  alt=''
+/>,<img
+            onClick={handleClick}
+            className='user-img-swiper borderImg'
+            src={user.userPic}
+            alt=''
+          />,<img
+          onClick={handleClick}
+          className='user-img-swiper borderImg'
+          src={user.userPic}
+          alt=''
+        />,<img
+        onClick={handleClick}
+        className='user-img-swiper borderImg'
+        src={user.userPic}
+        alt=''
+      />,<img
+      onClick={handleClick}
+      className='user-img-swiper borderImg'
+      src={user.userPic}
+      alt=''
+    />,<img
+    onClick={handleClick}
+    className='user-img-swiper borderImg'
+    src={user.userPic}
+    alt=''
+  />,<img
+  onClick={handleClick}
+  className='user-img-swiper borderImg'
+  src={user.userPic}
+  alt=''
+/>,<img
+            onClick={handleClick}
+            className='user-img-swiper borderImg'
+            src={user.userPic}
+            alt=''
+          />,<img
+          onClick={handleClick}
+          className='user-img-swiper borderImg'
+          src={user.userPic}
+          alt=''
+        />
+  ]
+
 
   return (
     <div className='swiper-container '>
@@ -45,8 +114,30 @@ export default function SwiperComponent({ theme, users, setUsers }) {
       <Swiper
         className='swiper-'
         modules={[Navigation]}
-        spaceBetween={15}
-        slidesPerView={8}
+        breakpoints={{
+          // when window width is >= 640px
+          340: {
+            width: 340,
+            slidesPerView: 5,
+          },
+
+          640: {
+            width: 640,
+            slidesPerView: 8,
+          },
+          // when window width is >= 768px
+          768: {
+            width: 768,
+            slidesPerView: 11,
+          },
+          1220: {
+            width: 768,
+            slidesPerView: 10,
+          },
+
+        }}
+        spaceBetween={3}
+        
         navigation={{
           nextEl: '.image-swiper-button-next',
           prevEl: '.image-swiper-button-prev',
@@ -67,168 +158,13 @@ export default function SwiperComponent({ theme, users, setUsers }) {
         //   },
         // }}
       >
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            onClick={handleClick}
-            className='user-img-swiper borderImg'
-            src={user.userPic}
-            alt=''
-          />{' '}
-          <p className='text'>{user.username}</p>
-        </SwiperSlide>
+
+{allUsers.map((e,index)=> (
+  <SwiperSlide key={index}>
+        {e}
+  </SwiperSlide>
+))}
+        
       </Swiper>
     </div>
   )
