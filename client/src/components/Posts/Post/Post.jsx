@@ -32,12 +32,17 @@ function Post({
   nickname,
   createdAt,
   _id: postID,
+  likes,
   posts,
   setPosts,
+  numberOfLikes,
 }) {
   const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
-
+  const [hasLiked, setHasLiked] = useState(() =>
+    likes.find((e) => e._id === user._id) ? true : false
+  )
+  const [likesCount, setLikesCount] = useState(numberOfLikes)
   const handleClick = () => {
     navigate(`/profile/${postAuthor._id}`)
   }
@@ -63,6 +68,20 @@ function Post({
       console.log(err)
     }
   }
+
+  const handleLikeUnlike = async (evt) => {
+    try {
+      const { data } = await axios(`/api/posts/${postID}`, {
+        method: 'PATCH',
+        withCredentials: true,
+      })
+      setHasLiked(data.state)
+      setLikesCount(data.data.numberOfLikes)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   const [commentOpen, setCommentOpen] = useState(false)
 
   const userPicURL = `${__URL_BASE__}${postAuthor.userPic}`
@@ -122,9 +141,12 @@ function Post({
           <img src={postPicURL} alt='' />
         </div>
         <div className='info-icons'>
-          <div className='item'>
+          <div className='item' onClick={handleLikeUnlike}>
             <img src={theme === 'dark' ? likeImgLight : likeImg} alt='' />
-            <p className='text'>Like</p>
+            <p className='text'>{hasLiked ? 'Unlike' : 'Like'}</p>
+            <span style={{ color: 'white', fontSize: '1.25rem' }}>
+              {likesCount}
+            </span>
           </div>
           <div className='item' onClick={() => setCommentOpen(!commentOpen)}>
             <img src={theme === 'dark' ? commentImgLight : commentImg} alt='' />

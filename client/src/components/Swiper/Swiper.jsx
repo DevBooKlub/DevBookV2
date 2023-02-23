@@ -11,7 +11,6 @@ import 'swiper/css'
 import './Swiper.scss'
 import 'swiper/css/navigation'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
 
 export default function SwiperComponent({ theme, users }) {
   const navigate = useNavigate()
