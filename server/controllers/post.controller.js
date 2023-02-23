@@ -1,4 +1,5 @@
 import Post from '../models/post.model.js'
+//  
 import catchAsync from '../utils/catchAsync.js'
 import AppError from '../utils/AppError.js'
 import { getPagination } from './post.helper.js'
@@ -65,4 +66,36 @@ const deletePost = catchAsync(async (req, res, next) => {
     data: null,
   })
 })
+
+
+
+// const addComment = catchAsync(async (req, res) => {
+
+//   const { id } = req.params
+//   const text =  req.body
+
+//  const post = await Post.findById(id)
+
+//  post.comments.push(text);
+   
+//   const updatedPost = await Post.findByIdAndUpdate(id, post, {new: true}).orFail(
+//     new AppError('Post not found.', 404)
+//   )
+//     comment.populate({
+//     path: 'user',
+//     select: 'username userPic',
+//   })
+//   // await updatedPost.save();
+
+//   res.status(201).json({
+//     status: 'success',
+//     updatedPost,
+//   })
+// });
+
+
+
+
+
+
 export { createPost, getAllPosts, getPost, deletePost }
