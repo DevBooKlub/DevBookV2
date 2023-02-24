@@ -16,7 +16,7 @@ import removeFriendLight from '../../../assets/img/removeContact.png'
 import deletePostLight from '../../../assets/img/trashLight.png'
 import deletePostDark from '../../../assets/img/trashDark.png'
 import veryfiedIcon from '../../../assets/img/verified.png'
-import likeRedImg from '../../../assets/img/likeRed.png'
+import LikeButton from './LikeButton'
 
 import moment from 'moment'
 
@@ -142,21 +142,16 @@ function Post({
           <img src={postPicURL} alt='' />
         </div>
         <div className='info-icons'>
-          <div className='item' onClick={handleLikeUnlike}>
-            <img src={theme === 'dark' ? likeImgLight : likeImg} alt='' />
-            <p className='text'>{hasLiked ? 'Unlike' : 'Like'}</p>
-            <span style={{ color: 'white', fontSize: '1.25rem' }}>
-              {likesCount}
-            </span>
-          </div>
+          <LikeButton
+            hasLiked={hasLiked}
+            handleLikeUnlike={handleLikeUnlike}
+            likesCount={likesCount}
+            theme={theme}
+          />
           <div className='item' onClick={() => setCommentOpen(!commentOpen)}>
             <img src={theme === 'dark' ? commentImgLight : commentImg} alt='' />
             <p className='text'>Comment</p>
           </div>
-          {/* <div className='item'>
-            <img src={theme === 'dark' ? shareImgLight : shareImg} alt='' />
-            <p className='text'>Share</p>
-          </div> */}
           {user._id === postAuthor._id ? (
             <div className='item' onClick={handleDelete}>
               <img
