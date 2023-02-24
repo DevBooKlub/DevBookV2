@@ -16,10 +16,10 @@ function SendPost({ theme, setTheme, setPosts }) {
   const { user } = useContext(AuthContext)
 
   const handleClick = () => {
-    navigate('/profile/id')
+    navigate(`/profile/${user._id}`)
   }
 
-  const [inputStr, setInputStr] = useState('')
+
   const [showPicker, setShowPicker] = useState(false)
 
   const [image, setImage] = useState(undefined)
@@ -29,7 +29,7 @@ function SendPost({ theme, setTheme, setPosts }) {
   })
 
   const onEmojiClick = (event, emojiObject) => {
-    setInputStr((prevInput) => prevInput + emojiObject.emoji)
+ setValue((prev) => ({...prev,desc: prev.desc.concat(emojiObject.emoji)}) )
     setShowPicker(false)
   }
 
@@ -86,14 +86,14 @@ function SendPost({ theme, setTheme, setPosts }) {
 
       <div className='type-post-wraper'>
         <div>
-          <input
+          {/* <input
             className='searchbar box-shadow button-TextInput text'
             name='title'
             type='text'
             placeholder='Add post title'
             value={value.title}
             onChange={handleChange}
-          />
+          /> */}
         </div>
         <div className='input-box'>
           <input

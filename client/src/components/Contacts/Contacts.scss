@@ -24,6 +24,9 @@ min-height: 34rem;
     font-size: 1.8rem;
     text-align: left;
     margin-bottom: 1rem;
+    @media (min-width: 2560px) and (max-width: 5560px) {
+      font-size: 2.2rem;
+     }
   }
 
   .border-line {

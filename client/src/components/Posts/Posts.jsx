@@ -5,7 +5,7 @@ import Post from './Post/Post'
 
 const getPosts = async (setPosts) => {
   try {
-    const { data } = await axios('/api/posts', {
+    const { data } = await axios('/api/posts?page=1&items=50', {
       method: 'GET',
       withCredentials: true,
     })
@@ -22,7 +22,13 @@ function Posts({ theme, posts, setPosts }) {
   return (
     <div className='post-container'>
       {posts.map((post) => (
-        <Post theme={theme} {...post} key={`post_${post._id}`} />
+        <Post
+          theme={theme}
+          {...post}
+          key={`post_${post._id}`}
+          setPosts={setPosts}
+          posts={posts}
+        />
       ))}
     </div>
   )

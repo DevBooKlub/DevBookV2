@@ -1,54 +1,70 @@
-import React, { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import axios from 'axios'
+
 import './Comments.scss'
-import userOneImg from '../../assets/img/userImg.jpg'
-import userTwoImg from '../../assets/img/contactImg.jpg'
-import sendImg from '../../assets/img/send.png'
-import sendImgLight from '../../assets/img/sendLight.png'
+
+import Comment from './Comment'
 import { AuthContext } from '../../context/authContext'
 
-function Comments() {
+function Comments({ comments: initialComments, postID }) {
   const { user } = useContext(AuthContext)
 
-  // const comments = [
-  //   {
-  //     id: 1,
-  //     name: "Denis McArdle",
-  //     desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',",
-  //     userId: 1,
-  //     profilePic: [userOneImg],
-  //   },
+  const [value, setValue] = useState('')
+  const [comments, setComment] = useState([])
 
-  //   {
-  //     id: 2,
-  //     name: "Nigel Nix",
-  //     desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-  //     userId: 2,
-  //     profilePic: [userTwoImg],
-  //   },
-  // ];
+  useEffect(() => {
+    setComment(
+      initialComments.sort(
+        (a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)
+      )
+    )
+  }, [])
+
+  const handleClick = async (evt) => {
+    try {
+      const { data } = await axios(`/api/comments/${postID}`, {
+        method: 'POST',
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          text: value,
+          user: user._id,
+          post: postID,
+        },
+      })
+
+      setComment((prev) => [data.data, ...prev])
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const handleChange = (evt) => {
+    setValue(evt.target.value)
+  }
 
   return (
     <div className='comments-container'>
       <div className='write-comment-container'>
-        <img className='borderImg' src={userOneImg} alt='' />
+        <img className='borderImg' src={user.userPic} alt='' />
         <input
           className='button-TextInput text'
           type='text'
           placeholder='Write comment'
+          value={value}
+          onChange={handleChange}
         />
-        <button className='text backgroundInner button-TextInput border'>
+        <button
+          className='text backgroundInner button-TextInput border'
+          onClick={handleClick}
+        >
           Send!
         </button>
       </div>
-
-      <div className='comment'>
-        <img className='borderImg' src={user.userPic} alt='' />
-        <div className='user-info-comment'>
-          <span className='text'>{user.username}</span>
-          <p className='text'>{user.username}</p>
-        </div>
-        <span className='date text'>1 hour ago</span>
-      </div>
+      {comments.map((comment) => (
+        <Comment key={`comment_${comment._id}`} {...comment} />
+      ))}
     </div>
   )
 }

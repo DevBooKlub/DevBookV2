@@ -9,7 +9,7 @@ function RightSection({theme, setTheme}) {
     <div className="right-section-container">
       <Contacts theme={theme} setTheme={setTheme} />
       <Radio/>
-      {/* <Jokes /> */}
+      <Jokes />
     </div>
   );
 }

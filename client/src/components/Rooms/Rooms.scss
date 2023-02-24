@@ -20,6 +20,10 @@
     font-size: 1.8rem;
     text-align: left;
     margin-bottom: 1rem;
+
+    @media (min-width: 2560px) and (max-width: 5560px) {
+      font-size: 2.2rem;
+     }
   }
 
   .border-line {
@@ -47,12 +51,20 @@
       img {
         width: 3rem;
         padding: 0.1rem;
+
+        @media (min-width: 2560px) and (max-width: 5560px) {
+         width: 4rem;
+        }
       }
 
       .room-title {
         font-size: 1.7rem;
         text-align: left;
         margin-left: 1rem;
+
+        @media (min-width: 2560px) and (max-width: 5560px) {
+          font-size: 1.9rem;
+        }
 
         // &:hover {
 
