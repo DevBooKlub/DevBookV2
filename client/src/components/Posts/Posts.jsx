@@ -19,7 +19,6 @@ function Posts({ theme, posts, setPosts }) {
   useEffect(() => {
     getPosts(setPosts)
   }, [])
-
   return (
     <div className='post-container'>
       {posts.map((post) => (

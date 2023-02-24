@@ -37,6 +37,7 @@ function Post({
   posts,
   setPosts,
   numberOfLikes,
+  comments,
 }) {
   const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -163,7 +164,7 @@ function Post({
             </div>
           ) : null}
         </div>
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments comments={comments} postID={postID} />}
       </div>
     </div>
   )
