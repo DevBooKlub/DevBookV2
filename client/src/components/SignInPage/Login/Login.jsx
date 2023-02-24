@@ -96,12 +96,12 @@ function Login({ open, setOpen }) {
         </button>
         {loginStatus ? (
           <div className='sign-in-error'>
-            Looks like your username or password was incorrect
+            Username or password was incorrect
           </div>
         ) : null}
       </form>
 
-      <a href='#'>
+      <a className='password-text' href='#'>
         <p className='text'>Forgot your password?</p>
       </a>
 

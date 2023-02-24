@@ -6,7 +6,8 @@
     justify-content: space-between;
     border-radius: 20px;
     overflow: hidden;
-    max-height: 30rem;
+    min-height: 30rem;
+   
  
     @media (min-width: 1920px) and (max-width: 2559px) {
       max-height: 30rem;
@@ -31,10 +32,11 @@
     
         .profile-img {
           position: absolute;
-          width: 12rem;
-          height: 12rem;
+          width: 10rem;
+          height: 10rem;
           padding: 0.1rem;
           object-fit: cover;
+      
           bottom: -3rem;
           -webkit-animation: heartbeat 1.5s ease-in-out 2 both;
           animation: heartbeat 1.5s ease-in-out 2 both;

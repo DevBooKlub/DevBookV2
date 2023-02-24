@@ -6,7 +6,7 @@ import darkImg from "../../assets/img/darkImg.png";
 import logowhite from "../../assets/img/logowhite.png";
 import lightImg from "../../assets/img/lightImg.png";
 import Modal from "./Modal/Modal";
-// import Model3d from "../3dModel/Model3d"
+import Model3d from "../3dModel/Model3d"
 import "../../_reset.scss";
 import Login from "./Login/Login";
 
@@ -39,7 +39,7 @@ function SignInPage() {
           <Modal open={open} setOpen={setOpen} closeModal={closeModal} />
         )}
         <div className="sign-section-left">
-          <div className="model-background-left"> </div>
+          <div className="model-background-left"><Model3d/> </div>
           <img
             className="logo-img-xl"
             src={theme === "dark" ? logowhite : SignUpLogoImgBlack}
@@ -57,7 +57,7 @@ function SignInPage() {
           </div>
         </div>
         <div className="sign-section-right">
-          <div className="model-background-right"> </div>
+          <div className="model-background-right"> <Model3d/></div>
         </div>
       </div>
     </div>

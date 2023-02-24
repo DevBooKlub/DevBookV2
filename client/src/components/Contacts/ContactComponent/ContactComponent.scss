@@ -33,12 +33,22 @@
       height: 3rem;
       object-fit: cover;
       margin-right: 1rem;
+
+      @media (min-width: 2560px) and (max-width: 5560px) {
+        width: 4rem;
+      height: 4rem;
+       }
      
     }
 
     .contact-name {
      
       justify-self: left;
+
+      @media (min-width: 2560px) and (max-width: 5560px) {
+      font-size: 1.7rem;
+       }
+     
     }
   }
 

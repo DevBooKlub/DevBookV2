@@ -29,7 +29,7 @@
 }
 
 .sign-section-left {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +44,7 @@
   }
 
   @media (min-width: 300px) and (max-width: 767px) {
+    width: 100%;
     display: none;
   }
 
@@ -140,10 +141,10 @@
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    height: 55rem;
+    height: 52rem;
     width: 55%;
     min-width: 35rem;
-    max-width: 40rem;
+    max-width: 35rem;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -159,7 +160,7 @@
 
     @media (min-width: 768px) and (max-width: 1000px) {
       height: 40rem;
-      max-height: 49rem;
+      max-height: 60rem;
       width: 55%;
       min-width: 32rem;
       max-width: 35rem;
@@ -218,7 +219,7 @@
       z-index: 10;
       color: rgb(255, 255, 255);
       left: 2rem;
-      top: 13.8rem;
+      top: 13.9rem;
       font-size: 1.2rem;
       font-family: "Poppins", sans-serif;
 
@@ -250,11 +251,11 @@
       transform: rotate(10deg);
 
       @media (min-width: 1000px) and (max-width: 1231px) {
-        height: 33rem;
+        height: 34rem;
       }
 
       @media (min-width: 768px) and (max-width: 1000px) {
-        height: 33rem;
+        height: 34rem;
       }
     }
 
@@ -303,6 +304,7 @@
         }
       }
     }
+
   }
 
   a {
@@ -311,6 +313,10 @@
     p {
       font-size: 1.3rem;
       text-decoration: none;
+
+      @media (min-width: 767px) and (max-width: 1240px) {
+        display: none;
+      }
     }
   }
 
@@ -346,7 +352,7 @@
 
 .sign-section-right {
   height: 100%;
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -372,10 +378,16 @@
   }
 }
 .sign-in-error {
-  color: red;
+  color: rgb(255, 0, 0);
   font-size: 1.5rem;
   width: 80%;
   text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: 767px) and (max-width: 1240px) {
+   
+    margin-top: 0rem;
+    margin-bottom: 0.4rem;
+  }
 }

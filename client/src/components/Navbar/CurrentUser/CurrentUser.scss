@@ -6,6 +6,30 @@
   padding: 0.5rem;
   height: 3.5rem;
   cursor: pointer;
+  margin-left: 3rem;
+  @media (min-width: 1432px) and (max-width: 8919px) {
+
+  }
+
+  @media (min-width: 300px) and (max-width: 1431px) {
+    min-width: 3rem;
+    min-height: 3rem;
+    margin-left: 2rem;
+  
+    
+    }
+
+    @media (min-width: 300px) and (max-width: 767px) {
+     margin-left:2rem;
+    }
+
+  // @media (min-width: 768px) and (max-width: 1000px) {
+  //   min-width: 2rem;
+  // }
+
+  // @media (min-width: 300px) and (max-width: 767px) {
+  //   min-width: 2rem;
+  // }
 
   &:hover {
     transform: scale(1.1);
@@ -17,6 +41,14 @@
     height: 2.2rem;
     border-radius: 40%;
     object-fit: cover;
+
+    @media (min-width: 300px) and (max-width: 1431px) {
+      min-width: 2rem;
+      min-height: 2rem;
+     max-width: 2rem;
+     max-height: 2rem;
+     
+      }
   }
 
   .user-name {
@@ -24,8 +56,10 @@
     margin-left: 1rem;
     text-align: center;
 
-    @media screen and (max-width: 1090px) {
+    @media screen and (max-width: 1431px) {
       display: none;
     }
+
+  
   }
 }

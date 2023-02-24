@@ -32,10 +32,29 @@ export default function SwiperComponent({ theme, users }) {
         alt=''
       />
       <Swiper
-        className='swiper-'
+        className='swiper'
         modules={[Navigation]}
-        spaceBetween={35}
-        slidesPerView={8}
+        breakpoints={{
+          340: {
+            width: 340,
+            slidesPerView: 4,
+          },
+
+          640: {
+            width: 640,
+            slidesPerView: 4,
+          },
+
+          768: {
+            width: 768,
+            slidesPerView: 5,
+          },
+          1220: {
+            width: 768,
+            slidesPerView: 10,
+          },
+        }}
+        spaceBetween={3}
         navigation={{
           nextEl: '.image-swiper-button-next',
           prevEl: '.image-swiper-button-prev',
