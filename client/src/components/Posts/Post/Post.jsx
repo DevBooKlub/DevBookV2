@@ -34,7 +34,7 @@ function Post({
   nickname,
   createdAt,
   _id: postID,
-  likes,
+  likes: initialLikes,
   posts,
   setPosts,
   numberOfLikes,
@@ -42,6 +42,7 @@ function Post({
 }) {
   const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
+  const [likes, setLikes] = useState(initialLikes)
   const [hasLiked, setHasLiked] = useState(() =>
     likes.find((e) => e._id === user._id) ? true : false
   )
@@ -81,11 +82,11 @@ function Post({
       })
       setHasLiked(data.state)
       setLikesCount(data.data.numberOfLikes)
+      setLikes(data.data.likes)
     } catch (err) {
       console.error(err)
     }
   }
-
   const [commentOpen, setCommentOpen] = useState(false)
 
   const userPicURL = `${__URL_BASE__}${postAuthor.userPic}`

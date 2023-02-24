@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 function LikedBy({ likes, likesCount }) {
   const [text, setText] = useState('')
   useEffect(() => {
+    console.log(likes)
     let t = likes
       .map((like) => like.username)
       .slice(0, 3)
