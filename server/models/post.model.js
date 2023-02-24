@@ -33,16 +33,33 @@ const postSchema = new Schema(
       ],
       default: [],
     },
-    comments: {
-      type: [String],
-      default: [],
-    },
   },
-  { timestamps: true }
+  { timestamps: true, toObject: {virtuals : true}, toJSON: {virtuals : true}}
 )
+
 postSchema.pre(/^find/, function (next) {
   this.populate({ path: 'user', select: 'username userPic nickname' })
   next()
 })
+
+postSchema.virtual('comments', {
+  ref: 'Comment',
+  foreignField: 'post',
+  localField: '_id'
+})
+
+postSchema.pre(/^find/, function (next) {
+  this.populate({ path: 'comments' })
+  next()
+})
+postSchema.pre(/^find/, function (next) {
+  this.populate({ path: 'likes' })
+  next()
+})
+postSchema.virtual('numberOfLikes').get(function(){
+  return this.likes.length
+})
+
+
 const Post = model('Post', postSchema)
 export { Post as default }

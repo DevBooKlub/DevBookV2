@@ -1,13 +1,10 @@
 .swiper-container {
   min-width: 100%;
-
-  // border: 1px solid rgb(3, 3, 3);
   max-height: 7rem;
   min-height: 7rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   margin-bottom: 2rem;
   position: relative;
   margin-top: 0.5rem;
@@ -19,17 +16,14 @@
     min-height: 4rem;
   }
 
-  // @media screen and (min-width: 640px) {
-  //   width: 640px;
-
-  // }
-
+ 
   .swiper-slide {
     display: flex;
     flex-direction: column;
-    height: 9rem;
+    height: 10rem;
     opacity: 1;
-
+    
+    
     @media (min-width: 350px) and (max-width: 800px) {
       max-height: 5rem;
       min-height: 5rem;
@@ -38,6 +32,7 @@
     p {
       margin-top: 0.3rem;
       font-size: 1.3rem;
+      text-align: center;
 
       @media (min-width: 350px) and (max-width: 1350px) {
         display: none;

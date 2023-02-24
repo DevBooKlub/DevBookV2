@@ -6,19 +6,21 @@
   gap: 2rem;
   padding: 1.5rem;
   margin-right: 1rem;
+  min-width: 29rem;
+  height: 100vh;
+  // overflow-y: scroll;
 
 
-
-  @media (min-width: 1000px) and (max-width: 1432px) {
+  @media (min-width: 1200px) and (max-width: 1432px) {
     width: 30%;
     min-width: 23rem;
   }
 
-  @media (min-width: 776px) and (max-width: 1000px) {
+  @media (min-width: 776px) and (max-width: 900px) {
     display:none;
    }
 
-  @media (min-width: 300px) and (max-width: 1001px) {
+  @media (min-width: 300px) and (max-width: 900px) {
    display:none;
   }
 }

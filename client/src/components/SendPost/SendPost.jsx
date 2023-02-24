@@ -19,7 +19,7 @@ function SendPost({ theme, setTheme, setPosts }) {
     navigate(`/profile/${user._id}`)
   }
 
-  const [inputStr, setInputStr] = useState('')
+
   const [showPicker, setShowPicker] = useState(false)
 
   const [image, setImage] = useState(undefined)
@@ -29,7 +29,7 @@ function SendPost({ theme, setTheme, setPosts }) {
   })
 
   const onEmojiClick = (event, emojiObject) => {
-    setInputStr((prevInput) => prevInput + emojiObject.emoji)
+ setValue((prev) => ({...prev,desc: prev.desc.concat(emojiObject.emoji)}) )
     setShowPicker(false)
   }
 

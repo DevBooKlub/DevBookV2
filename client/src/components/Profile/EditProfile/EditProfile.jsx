@@ -51,7 +51,6 @@ function EditProfile({ open, setOpen }) {
 
       const { data } = await axios(`/api/users/`, axiosConfig)
       setUser(data.data)
-      console.log(data.data)
       closeModal()
     } catch (error) {
       console.log(error)
