@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react'
+import moment from 'moment'
+
 import './Post.scss'
 import likeImg from '../../../assets/img/like.png'
 import likeImgLight from '../../../assets/img/likeLight.png'
@@ -17,8 +19,7 @@ import deletePostLight from '../../../assets/img/trashLight.png'
 import deletePostDark from '../../../assets/img/trashDark.png'
 import veryfiedIcon from '../../../assets/img/verified.png'
 import LikeButton from './LikeButton'
-
-import moment from 'moment'
+import LikedBy from './LikedBy'
 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -45,6 +46,7 @@ function Post({
     likes.find((e) => e._id === user._id) ? true : false
   )
   const [likesCount, setLikesCount] = useState(numberOfLikes)
+
   const handleClick = () => {
     navigate(`/profile/${postAuthor._id}`)
   }
@@ -163,6 +165,7 @@ function Post({
               <p className='text'>Delete</p>
             </div>
           ) : null}
+          <LikedBy likes={likes} likesCount={likesCount} />
         </div>
         {commentOpen && <Comments comments={comments} postID={postID} />}
       </div>

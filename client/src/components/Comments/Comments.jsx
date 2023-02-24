@@ -36,7 +36,6 @@ function Comments({ comments: initialComments, postID }) {
       })
 
       setComment((prev) => [data.data, ...prev])
-      console.log(data.data)
     } catch (err) {
       console.log(err)
     }
