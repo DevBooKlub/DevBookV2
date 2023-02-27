@@ -10,6 +10,9 @@ import Picker from 'emoji-picker-react'
 import emojiIcon from '../../assets/img/emoji.png'
 import { Theme } from 'emoji-picker-react'
 import { SuggestionMode } from 'emoji-picker-react'
+// import ModalBG from '../SignInPage/Modal/ModalBG'
+// import ModalBGGreen from '../SignInPage/Modal/ModalBGGreen'
+// import WaveSvg from '../WaveSvg/WaveSvg'
 
 function SendPost({ theme, setTheme, setPosts }) {
   const navigate = useNavigate()
@@ -37,13 +40,9 @@ function SendPost({ theme, setTheme, setPosts }) {
     setValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleEmoji = (e) => {
-    setInputStr(e.target.value)
-  }
+ 
 
-  const doubleFunction = () => {
-    handleEmoji()
-  }
+
 
   const fileChange = (e) => {
     setImage(e.target.files[0])
@@ -75,6 +74,10 @@ function SendPost({ theme, setTheme, setPosts }) {
 
   return (
     <div className='sendPost-container backgroundInner box-shadow'>
+       {/* <div className='modalbg-wrapper'>
+      {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
+      <WaveSvg/>
+          </div> */}
       <div className='user-img-container'>
         <img
           className='borderImg box-shadow'

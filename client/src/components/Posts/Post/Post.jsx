@@ -20,6 +20,9 @@ import deletePostDark from '../../../assets/img/trashDark.png'
 import veryfiedIcon from '../../../assets/img/verified.png'
 import LikeButton from './LikeButton'
 import LikedBy from './LikedBy'
+// import ModalBG from '../../SignInPage/Modal/ModalBG'
+// import ModalBGGreen from '../../SignInPage/Modal/ModalBGGreen'
+// import WaveSvg from '../../WaveSvg/WaveSvg'
 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -95,6 +98,10 @@ function Post({
   return (
     <div className='single-post-container backgroundInner box-shadow'>
       <div className='single-post-wraper'>
+      {/* <div className='modalbg-wrapper'>
+      {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
+      <WaveSvg/>
+          </div> */}
         <div className='user'>
           <div className='userInfo'>
             {postAuthor.userPic && (
@@ -145,6 +152,7 @@ function Post({
           <p className='post-text text'>{desc}</p>
           <img src={postPicURL} alt='' />
         </div>
+        <div className='icons-bottom-likeby-wrapper'>
         <div className='info-icons'>
           <LikeButton
             hasLiked={hasLiked}
@@ -166,9 +174,11 @@ function Post({
               <p className='text'>Delete</p>
             </div>
           ) : null}
-          <LikedBy likes={likes} likesCount={likesCount} />
+          
         </div>
-        {commentOpen && <Comments comments={comments} postID={postID} />}
+        <LikedBy theme={theme} likes={likes} likesCount={likesCount} />
+        </div>
+        {commentOpen && <Comments theme={theme} setCommentOpen={setCommentOpen} commentOpen={commentOpen} comments={comments} postID={postID} />}
       </div>
     </div>
   )

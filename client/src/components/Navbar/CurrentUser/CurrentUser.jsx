@@ -1,11 +1,20 @@
 import './CurrentUser.scss'
+import Dropdown from '../Dropdown/Dropdown'
+import { useState } from 'react'
 
 import CurrentUserComponent from './CurrentUserComponent'
 
-function CurrentUser() {
+function CurrentUser(props) {
+
+const [open, setOpen] = useState(false)
+
   return (
-    <div className='current-user-container box-shadow button-TextInput borderCurrentUser backgroundInner'>
-      <CurrentUserComponent />
+    <div onClick={()=> setOpen(!open)} className='current-user-container box-shadow button-TextInput borderCurrentUser backgroundInner'>
+      <CurrentUserComponent  />
+{open && props.children}
+      
+
+      
     </div>
   )
 }

@@ -18,6 +18,7 @@ function Layout() {
       {user && (
         <div className='main background box-shadow'>
           <Navbar theme={theme} setTheme={setTheme} />
+
           <div className='main-layout-container'>
             <LeftSection theme={theme} setTheme={setTheme} />
             <Outlet context={[theme]} />

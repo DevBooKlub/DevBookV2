@@ -1,0 +1,26 @@
+.dropdown-container{
+    position: absolute;
+    top: 58px;
+    height: 40rem;
+    right: 0;
+    width: 28rem;
+    z-index: 4;
+   background-color: white;
+    border: 1px solid white;
+    overflow: hidden;
+    border-radius: 20px;
+    
+
+    img{
+        width: 20px;
+    }
+ .menu-item{
+
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    
+
+   
+ }
+}
