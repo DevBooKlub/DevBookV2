@@ -18,7 +18,7 @@ function Profile({ theme, setTheme }) {
     <div className='profile-container backgroundInner box-shadow'>
       <UserProfileDetails theme={theme} setTheme={setTheme} />
       {open && (
-        <EditProfile open={open} setOpen={setOpen} closeModal={closeModal} />
+        <EditProfile theme={theme} setTheme={setTheme} open={open} setOpen={setOpen} closeModal={closeModal} />
       )}
       <div className='border-line border'></div>
       <div className='button-profile-conatiner '>

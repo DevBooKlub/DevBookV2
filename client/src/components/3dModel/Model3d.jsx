@@ -16,7 +16,7 @@ export function Fantasybg(props) {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
 
-    spining.current.rotation.y = elapsedTime / 40;
+    spining.current.rotation.y = elapsedTime / 20;
   });
 
   const { nodes, materials } = useGLTF("/singuCC.glb");

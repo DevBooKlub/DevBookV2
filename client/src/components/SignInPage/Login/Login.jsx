@@ -79,7 +79,7 @@ function Login({ open, setOpen }) {
           onChange={handleChange}
         />
         <input
-          className='border box-shadow button-TextInput text '
+          className='border box-shadow button-TextInput text password-input'
           type='text'
           placeholder='Password'
           id='password'
@@ -96,7 +96,7 @@ function Login({ open, setOpen }) {
         </button>
         {loginStatus ? (
           <div className='sign-in-error'>
-            Username or password was incorrect
+            Email or Password was Incorrect
           </div>
         ) : null}
       </form>

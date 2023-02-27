@@ -6,10 +6,14 @@ function Comment({ text, user, createdAt }) {
     <div className='comment'>
       <img className='borderImg' src={user.userPic} alt='' />
       <div className='user-info-comment'>
-        <span className='text'>{text}</span>
+        
         <p className='text'>{user.username}</p>
+        <span className='text'>{text}</span>
       </div>
-      <span className='date text'>{moment(createdAt).fromNow()}</span>
+      <ul>
+        <li className='date textPostDate'>{moment(createdAt).fromNow()}</li>
+      </ul>
+      
     </div>
   )
 }

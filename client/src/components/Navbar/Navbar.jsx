@@ -10,12 +10,15 @@ import darkMode from "../../assets/img/darkImg.png";
 import lightMode from "../../assets/img/lightmodeorange.png";
 import CurrentUser from "./CurrentUser/CurrentUser";
 import logOutIcon from "../../assets/img/logout.png";
+import Dropdown from "./Dropdown/Dropdown";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 
-function Navbar({ theme, setTheme }) {
+function Navbar({ theme, setTheme, props }) {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+const [open, setOpen] = useState(false)
 
   const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -229,8 +232,20 @@ function Navbar({ theme, setTheme }) {
             </li> */}
             </ul>
           </div>
+            
+          <CurrentUser> 
+          
+          <Dropdown></Dropdown>
+          
+          </CurrentUser>
 
-          <CurrentUser />
+         
+        
+       
+          
+             
+          
+        
         </div>
       </div>
     </div>

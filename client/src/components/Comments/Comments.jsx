@@ -1,16 +1,26 @@
 import { useContext, useState, useEffect } from 'react'
+import closeCommentIcon from "../../assets/img/cancelLight.png"
+import closeCommentIconDark from "../../assets/img/cancelDark.png"
+import emojiIcon from '../../assets/img/emoji.png'
 import axios from 'axios'
-
+import Picker from 'emoji-picker-react'
 import './Comments.scss'
-
 import Comment from './Comment'
 import { AuthContext } from '../../context/authContext'
 
-function Comments({ comments: initialComments, postID }) {
+function Comments({ comments: initialComments, postID, setCommentOpen, commentOpen,theme  }) {
   const { user } = useContext(AuthContext)
 
   const [value, setValue] = useState('')
   const [comments, setComment] = useState([])
+
+  const [showPicker, setShowPicker] = useState(false)
+
+  const onEmojiClick = (event, emojiObject) => {
+    setValue((prev) => prev.concat(emojiObject.emoji) )
+       setShowPicker(false)
+     }
+
 
   useEffect(() => {
     setComment(
@@ -46,8 +56,10 @@ function Comments({ comments: initialComments, postID }) {
 
   return (
     <div className='comments-container'>
+      <div className='comments-border border-line'></div>
       <div className='write-comment-container'>
-        <img className='borderImg' src={user.userPic} alt='' />
+        <img className='borderImg user-img' src={user.userPic} alt='' />
+        <div className='input-box-comments'>
         <input
           className='button-TextInput text'
           type='text'
@@ -55,6 +67,35 @@ function Comments({ comments: initialComments, postID }) {
           value={value}
           onChange={handleChange}
         />
+         <img
+            className='emoji-icon-btn-comments'
+            src={emojiIcon}
+            onClick={() => setShowPicker((val) => !val)}
+            alt=''
+          />
+{showPicker && (
+            <Picker
+              Theme='auto'
+              pickerStyle={{
+                width: '40%',
+                position: 'absolute',
+                right: '0',
+                bottom: '-820%',
+                background: '#f4f4f4',
+                height:"20rem",
+                
+                
+              }}
+              groupVisibility={{
+                recently_used: false,
+              }}
+              disableSearchBar={true}
+              disableSkinTonePicker={true}
+              onEmojiClick={onEmojiClick}
+            />
+          )}
+          </div>
+         
         <button
           className='text backgroundInner button-TextInput border'
           onClick={handleClick}
@@ -65,6 +106,8 @@ function Comments({ comments: initialComments, postID }) {
       {comments.map((comment) => (
         <Comment key={`comment_${comment._id}`} {...comment} />
       ))}
+
+      <div onClick={() => setCommentOpen(!commentOpen)} className='close-comment'><img src={theme === 'dark' ? closeCommentIcon : closeCommentIconDark} alt="" /></div>
     </div>
   )
 }
