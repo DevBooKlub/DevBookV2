@@ -60,7 +60,10 @@ function SendPost({ theme, setTheme, setPosts }) {
         },
         data: formData,
       }
-      const req = await axios('api/posts', axiosConfig)
+      const req = await axios(
+        'https://dev-book-server-vl45.onrender.com/api/posts',
+        axiosConfig
+      )
       console.log(req)
       setPosts((prev) => {
         return [req.data.data, ...prev]
