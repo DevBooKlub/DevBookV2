@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
-import closeCommentIcon from "../../assets/img/cancelLight.png"
-import closeCommentIconDark from "../../assets/img/cancelDark.png"
+import closeCommentIcon from '../../assets/img/cancelLight.png'
+import closeCommentIconDark from '../../assets/img/cancelDark.png'
 import emojiIcon from '../../assets/img/emoji.png'
 import axios from 'axios'
 import Picker from 'emoji-picker-react'
@@ -8,7 +8,13 @@ import './Comments.scss'
 import Comment from './Comment'
 import { AuthContext } from '../../context/authContext'
 
-function Comments({ comments: initialComments, postID, setCommentOpen, commentOpen,theme  }) {
+function Comments({
+  comments: initialComments,
+  postID,
+  setCommentOpen,
+  commentOpen,
+  theme,
+}) {
   const { user } = useContext(AuthContext)
 
   const [value, setValue] = useState('')
@@ -17,10 +23,9 @@ function Comments({ comments: initialComments, postID, setCommentOpen, commentOp
   const [showPicker, setShowPicker] = useState(false)
 
   const onEmojiClick = (event, emojiObject) => {
-    setValue((prev) => prev.concat(emojiObject.emoji) )
-       setShowPicker(false)
-     }
-
+    setValue((prev) => prev.concat(emojiObject.emoji))
+    setShowPicker(false)
+  }
 
   useEffect(() => {
     setComment(
@@ -32,18 +37,21 @@ function Comments({ comments: initialComments, postID, setCommentOpen, commentOp
 
   const handleClick = async (evt) => {
     try {
-      const { data } = await axios(`/api/comments/${postID}`, {
-        method: 'POST',
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          text: value,
-          user: user._id,
-          post: postID,
-        },
-      })
+      const { data } = await axios(
+        `https://dev-book-server.onrender.com/api/comments/${postID}`,
+        {
+          method: 'POST',
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          data: {
+            text: value,
+            user: user._id,
+            post: postID,
+          },
+        }
+      )
 
       setComment((prev) => [data.data, ...prev])
     } catch (err) {
@@ -60,20 +68,20 @@ function Comments({ comments: initialComments, postID, setCommentOpen, commentOp
       <div className='write-comment-container'>
         <img className='borderImg user-img' src={user.userPic} alt='' />
         <div className='input-box-comments'>
-        <input
-          className='button-TextInput text'
-          type='text'
-          placeholder='Write comment'
-          value={value}
-          onChange={handleChange}
-        />
-         <img
+          <input
+            className='button-TextInput text'
+            type='text'
+            placeholder='Write comment'
+            value={value}
+            onChange={handleChange}
+          />
+          <img
             className='emoji-icon-btn-comments'
             src={emojiIcon}
             onClick={() => setShowPicker((val) => !val)}
             alt=''
           />
-{showPicker && (
+          {showPicker && (
             <Picker
               Theme='auto'
               pickerStyle={{
@@ -82,9 +90,7 @@ function Comments({ comments: initialComments, postID, setCommentOpen, commentOp
                 right: '0',
                 bottom: '-820%',
                 background: '#f4f4f4',
-                height:"20rem",
-                
-                
+                height: '20rem',
               }}
               groupVisibility={{
                 recently_used: false,
@@ -94,8 +100,8 @@ function Comments({ comments: initialComments, postID, setCommentOpen, commentOp
               onEmojiClick={onEmojiClick}
             />
           )}
-          </div>
-         
+        </div>
+
         <button
           className='text backgroundInner button-TextInput border'
           onClick={handleClick}
@@ -107,7 +113,15 @@ function Comments({ comments: initialComments, postID, setCommentOpen, commentOp
         <Comment key={`comment_${comment._id}`} {...comment} />
       ))}
 
-      <div onClick={() => setCommentOpen(!commentOpen)} className='close-comment'><img src={theme === 'dark' ? closeCommentIcon : closeCommentIconDark} alt="" /></div>
+      <div
+        onClick={() => setCommentOpen(!commentOpen)}
+        className='close-comment'
+      >
+        <img
+          src={theme === 'dark' ? closeCommentIcon : closeCommentIconDark}
+          alt=''
+        />
+      </div>
     </div>
   )
 }

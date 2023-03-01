@@ -9,10 +9,13 @@ import Swiper from '../Swiper/Swiper'
 
 const fetchAllUsers = async (setUsers) => {
   try {
-    const { data } = await axios('/api/users', {
-      method: 'GET',
-      withCredentials: true,
-    })
+    const { data } = await axios(
+      'https://dev-book-server.onrender.com/api/users',
+      {
+        method: 'GET',
+        withCredentials: true,
+      }
+    )
     setUsers(data.data)
   } catch (err) {
     console.log(err)

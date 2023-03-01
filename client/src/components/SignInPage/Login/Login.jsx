@@ -46,7 +46,7 @@ function Login({ open, setOpen }) {
     }
     try {
       const { data } = await axios(
-        '/api/login?friends=true&posts=true',
+        'https://dev-book-server.onrender.com/api/login?friends=true&posts=true',
         axiosConfig
       )
       setUser(data.data)
@@ -95,9 +95,7 @@ function Login({ open, setOpen }) {
           Sign In!
         </button>
         {loginStatus ? (
-          <div className='sign-in-error'>
-            Email or Password was Incorrect
-          </div>
+          <div className='sign-in-error'>Email or Password was Incorrect</div>
         ) : null}
       </form>
 

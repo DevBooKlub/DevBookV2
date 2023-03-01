@@ -4,13 +4,13 @@ import './editProfile.scss'
 import axios from 'axios'
 import logoBlack from '../../../assets/img/logosmall.png'
 import closeIconBlack from '../../../assets/img/close.png'
-import logowhite from "../../../assets/img/logowhite.png";
+import logowhite from '../../../assets/img/logowhite.png'
 import closeImgWhite from '../../../assets/img/closeLight.png'
 import addImgIconColor from '../../../assets/img/addImgColor.png'
 import ModalBG from '../../ModalBG/ModalBG'
 import ModalBGGreen from '../../ModalBG/ModalBGGreen'
 
-function EditProfile({theme,setTheme, open, setOpen }) {
+function EditProfile({ theme, setTheme, open, setOpen }) {
   const { user, setUser } = useContext(AuthContext)
 
   const closeModal = () => {
@@ -54,7 +54,10 @@ function EditProfile({theme,setTheme, open, setOpen }) {
         data: formData,
       }
 
-      const { data } = await axios(`/api/users/`, axiosConfig)
+      const { data } = await axios(
+        `https://dev-book-server.onrender.com/api/users/`,
+        axiosConfig
+      )
       setUser(data.data)
       closeModal()
     } catch (error) {
@@ -65,24 +68,33 @@ function EditProfile({theme,setTheme, open, setOpen }) {
   return (
     <div className='modal'>
       <div className='modal-content-edit'>
-
-      <div className='modalbg-wrapper-top-edit'>
-      {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
-          </div>
-          <div className='modalbg-wrapper-top-two-edit'>
-          {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
-          </div>
+        <div className='modalbg-wrapper-top-edit'>
+          {theme === 'dark' ? <ModalBG /> : <ModalBGGreen />}
+        </div>
+        <div className='modalbg-wrapper-top-two-edit'>
+          {theme === 'dark' ? <ModalBG /> : <ModalBGGreen />}
+        </div>
         <img
           className='close-icon'
-          src={theme === "dark" ? closeImgWhite : closeIconBlack}
+          src={theme === 'dark' ? closeImgWhite : closeIconBlack}
           onClick={closeModal}
           alt=''
         />
-        <img className='logo-img-modal' src={theme === "dark" ? logowhite : logoBlack} alt='' />
-        <div className='modal-welcome-text-box-edit'><h1 className='edit-text'>Edit Your Profile!</h1></div>
+        <img
+          className='logo-img-modal'
+          src={theme === 'dark' ? logowhite : logoBlack}
+          alt=''
+        />
+        <div className='modal-welcome-text-box-edit'>
+          <h1 className='edit-text'>Edit Your Profile!</h1>
+        </div>
         <div className='modal-form-container-edit'>
-         
-          <form className='edit-form' action='' method='post' onSubmit={handleSubmit}>
+          <form
+            className='edit-form'
+            action=''
+            method='post'
+            onSubmit={handleSubmit}
+          >
             {/* <label htmlFor="name"><b>Name</b> */}
             <input
               type='text'
@@ -111,48 +123,50 @@ function EditProfile({theme,setTheme, open, setOpen }) {
               onChange={handleInputChange}
               value={value.quote}
             />
-          
-            
-            <div className='add-img-wrapper'> 
-            <label className="btn-addImg" htmlFor="userPic">
-        <img
-          className="btn-icon"
-          src={addImgIconColor}
-          alt=""
-        />
-            <input type='file' id="userPic" className='addImg-input' name='userPic' onChange={fileChange} />
-            <p className='AddImg-text' id="addImg">Update Your Profile Picture</p>
-             </label>
-             
-             </div>
 
-           
-                <div className='add-img-wrapper'> 
-            <label className="btn-addImg" htmlFor="userBanner">
-        <img
-          className="btn-icon"
-          src={addImgIconColor}
-          alt=""
-        />
-            <input type='file' id="userBanner" className='addImg-input' name='userBanner' onChange={fileChange} />
-            <p className='AddImg-text' id="addImg">Update Your Profile Banner</p>
-             </label>
-             
-             </div>
+            <div className='add-img-wrapper'>
+              <label className='btn-addImg' htmlFor='userPic'>
+                <img className='btn-icon' src={addImgIconColor} alt='' />
+                <input
+                  type='file'
+                  id='userPic'
+                  className='addImg-input'
+                  name='userPic'
+                  onChange={fileChange}
+                />
+                <p className='AddImg-text' id='addImg'>
+                  Update Your Profile Picture
+                </p>
+              </label>
+            </div>
+
+            <div className='add-img-wrapper'>
+              <label className='btn-addImg' htmlFor='userBanner'>
+                <img className='btn-icon' src={addImgIconColor} alt='' />
+                <input
+                  type='file'
+                  id='userBanner'
+                  className='addImg-input'
+                  name='userBanner'
+                  onChange={fileChange}
+                />
+                <p className='AddImg-text' id='addImg'>
+                  Update Your Profile Banner
+                </p>
+              </label>
+            </div>
 
             <button type='submit' className='edit-button backgroundInner'>
               Save Changes
             </button>
           </form>
-
- 
         </div>
         <div className='modalbg-wrapper-edit'>
-        {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
-          </div>
-          <div className='modalbg-wrapper-two-edit'>
-          {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
-          </div>
+          {theme === 'dark' ? <ModalBG /> : <ModalBGGreen />}
+        </div>
+        <div className='modalbg-wrapper-two-edit'>
+          {theme === 'dark' ? <ModalBG /> : <ModalBGGreen />}
+        </div>
       </div>
     </div>
   )
