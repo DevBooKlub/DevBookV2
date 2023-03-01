@@ -63,8 +63,8 @@ function Post({
       const { data } = await axios({
         method: 'patch',
         url: `https://dev-book-server-vl45.onrender.com/api/users/${postAuthor._id}`,
+        withCredentials: true,
       })
-      console.log('add remove user', data, typeof data)
       setUser(data.data)
     } catch (err) {
       console.log(err)
