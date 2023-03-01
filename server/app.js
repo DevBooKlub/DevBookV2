@@ -14,7 +14,7 @@ const app = express()
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const uploadsFolderPath = join(__dirname, 'uploads')
 const corsConfig = {
-  origin: ' https://dev-book-client.onrender.com/',
+  origin: 'https://dev-book-client-ohzv.onrender.com',
   credentials: true,
 }
 app.use(express.urlencoded({ extended: true }))
