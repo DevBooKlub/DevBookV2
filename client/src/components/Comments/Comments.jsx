@@ -66,7 +66,11 @@ function Comments({
     <div className='comments-container'>
       <div className='comments-border border-line'></div>
       <div className='write-comment-container'>
-        <img className='borderImg user-img' src={user.userPic} alt='' />
+        <img
+          className='borderImg user-img'
+          src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
+          alt=''
+        />
         <div className='input-box-comments'>
           <input
             className='button-TextInput text'

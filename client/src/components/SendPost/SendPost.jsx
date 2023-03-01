@@ -82,7 +82,7 @@ function SendPost({ theme, setTheme, setPosts }) {
       <div className='user-img-container'>
         <img
           className='borderImg box-shadow'
-          src={user.userPic}
+          src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
           onClick={handleClick}
           alt=''
         />
