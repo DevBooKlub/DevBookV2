@@ -17,7 +17,7 @@ import { SuggestionMode } from 'emoji-picker-react'
 function SendPost({ theme, setTheme, setPosts }) {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
-
+  console.log('This is send post user, mate:', user)
   const handleClick = () => {
     navigate(`/profile/${user._id}`)
   }
