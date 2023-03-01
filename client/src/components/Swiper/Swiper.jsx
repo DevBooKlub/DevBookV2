@@ -60,8 +60,8 @@ export default function SwiperComponent({ theme, users }) {
           prevEl: '.image-swiper-button-prev',
           disabledClass: 'swiper-button-disabled',
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
       >
         {users.map((user) => (
           <SwiperSlide key={`swipper_${user._id}`}>

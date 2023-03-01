@@ -10,6 +10,7 @@ import Picker from 'emoji-picker-react'
 import emojiIcon from '../../assets/img/emoji.png'
 import { Theme } from 'emoji-picker-react'
 import { SuggestionMode } from 'emoji-picker-react'
+import { useEffect } from 'react'
 // import ModalBG from '../SignInPage/Modal/ModalBG'
 // import ModalBGGreen from '../SignInPage/Modal/ModalBGGreen'
 // import WaveSvg from '../WaveSvg/WaveSvg'
@@ -17,11 +18,12 @@ import { SuggestionMode } from 'emoji-picker-react'
 function SendPost({ theme, setTheme, setPosts }) {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
-
+  useEffect(() => {
+    console.log('This is the user in the SendPost', post)
+  }, [user])
   const handleClick = () => {
     navigate(`/profile/${user._id}`)
   }
-
 
   const [showPicker, setShowPicker] = useState(false)
 
@@ -32,17 +34,13 @@ function SendPost({ theme, setTheme, setPosts }) {
   })
 
   const onEmojiClick = (event, emojiObject) => {
- setValue((prev) => ({...prev,desc: prev.desc.concat(emojiObject.emoji)}) )
+    setValue((prev) => ({ ...prev, desc: prev.desc.concat(emojiObject.emoji) }))
     setShowPicker(false)
   }
 
   const handleChange = (e) => {
     setValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
-
- 
-
-
 
   const fileChange = (e) => {
     setImage(e.target.files[0])
@@ -74,7 +72,7 @@ function SendPost({ theme, setTheme, setPosts }) {
 
   return (
     <div className='sendPost-container backgroundInner box-shadow'>
-       {/* <div className='modalbg-wrapper'>
+      {/* <div className='modalbg-wrapper'>
       {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
       <WaveSvg/>
           </div> */}
