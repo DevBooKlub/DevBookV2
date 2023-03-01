@@ -60,6 +60,7 @@ function SendPost({ theme, setTheme, setPosts }) {
         },
         data: formData,
       }
+      console.log(data)
       const { data } = await axios('api/posts', axiosConfig)
       setPosts((prev) => [data.data, ...prev])
     } catch (error) {
