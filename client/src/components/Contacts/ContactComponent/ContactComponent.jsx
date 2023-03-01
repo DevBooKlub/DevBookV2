@@ -26,7 +26,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
   const removeFriend = async () => {
     const { data } = await axios({
       method: 'patch',
-      url: `https://dev-book-server.onrender.com/api/users/${friend._id}`,
+      url: `https://dev-book-server-vl45.onrender.com/api/users/${friend._id}`,
       headers: { 'Content-Type': 'application/json' },
     })
     setUser(data.data)

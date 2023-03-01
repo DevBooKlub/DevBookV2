@@ -43,7 +43,7 @@ function Modal({ theme, setOpen }) {
     formData.append('userPic', userPic)
     try {
       const { data } = await axios(
-        'https://dev-book-server.onrender.com/api/register',
+        'https://dev-book-server-vl45.onrender.com/api/register',
         {
           method: 'POST',
           withCredentials: true,

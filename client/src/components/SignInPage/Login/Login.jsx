@@ -46,7 +46,7 @@ function Login({ open, setOpen }) {
     }
     try {
       const { data } = await axios(
-        'https://dev-book-server.onrender.com/api/login?friends=true&posts=true',
+        'https://dev-book-server-vl45.onrender.com/api/login?friends=true&posts=true',
         axiosConfig
       )
       setUser(data.data)

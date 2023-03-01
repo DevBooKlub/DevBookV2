@@ -55,7 +55,7 @@ function EditProfile({ theme, setTheme, open, setOpen }) {
       }
 
       const { data } = await axios(
-        `https://dev-book-server.onrender.com/api/users/`,
+        `https://dev-book-server-vl45.onrender.com/api/users/`,
         axiosConfig
       )
       setUser(data.data)

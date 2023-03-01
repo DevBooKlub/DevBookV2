@@ -45,7 +45,7 @@ function Navbar({ theme, setTheme, props }) {
 
   const handleLogout = async () => {
     try {
-      await axios('https://dev-book-server.onrender.com/api/logout', {
+      await axios('https://dev-book-server-vl45.onrender.com/api/logout', {
         method: 'DELETE',
         withCredentials: true,
       })

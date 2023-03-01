@@ -38,7 +38,7 @@ function Comments({
   const handleClick = async (evt) => {
     try {
       const { data } = await axios(
-        `https://dev-book-server.onrender.com/api/comments/${postID}`,
+        `https://dev-book-server-vl45.onrender.com/api/comments/${postID}`,
         {
           method: 'POST',
           withCredentials: true,

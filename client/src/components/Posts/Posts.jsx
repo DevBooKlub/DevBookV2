@@ -6,7 +6,7 @@ import Post from './Post/Post'
 const getPosts = async (setPosts) => {
   try {
     const { data } = await axios(
-      'https://dev-book-server.onrender.com/api/posts?page=1&items=50',
+      'https://dev-book-server-vl45.onrender.com/api/posts?page=1&items=50',
       {
         method: 'GET',
         withCredentials: true,

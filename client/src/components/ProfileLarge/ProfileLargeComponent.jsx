@@ -9,7 +9,7 @@ import banerImgDark from '../../assets/img/darkBanner.jpg'
 const fetchData = async (profileID, setProfile, navigate, setPosts) => {
   try {
     const { data } = await axios(
-      `https://dev-book-server.onrender.com/api/users/${profileID}?posts=true`,
+      `https://dev-book-server-vl45.onrender.com/api/users/${profileID}?posts=true`,
       {
         method: 'GET',
         withCredentials: true,

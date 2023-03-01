@@ -61,14 +61,14 @@ function Post({
   const handleAddRemoveFriend = async () => {
     const { data } = await axios({
       method: 'patch',
-      url: `https://dev-book-server.onrender.com/api/users/${postAuthor._id}`,
+      url: `https://dev-book-server-vl45.onrender.com/api/users/${postAuthor._id}`,
     })
     setUser(data.data)
   }
   const handleDelete = async () => {
     try {
       const res = await axios(
-        `https://dev-book-server.onrender.com/api/posts/${postID}`,
+        `https://dev-book-server-vl45.onrender.com/api/posts/${postID}`,
         {
           method: 'DELETE',
           withCredentials: true,
@@ -83,7 +83,7 @@ function Post({
   const handleLikeUnlike = async (evt) => {
     try {
       const { data } = await axios(
-        `https://dev-book-server.onrender.com/api/posts/${postID}`,
+        `https://dev-book-server-vl45.onrender.com/api/posts/${postID}`,
         {
           method: 'PATCH',
           withCredentials: true,
