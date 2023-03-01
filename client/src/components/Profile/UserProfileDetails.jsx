@@ -22,7 +22,7 @@ function UserProfileDetails({ theme, setTheme }) {
           className='banner-img'
           src={
             user.userBanner
-              ? `https://dev-book-server-vl45.onrender.com/uploads/images/${user.userBanner}`
+              ? `https://dev-book-server-vl45.onrender.com/${user.userBanner}`
               : theme === 'dark'
               ? banerImgDark
               : banerImgLight
@@ -35,7 +35,7 @@ function UserProfileDetails({ theme, setTheme }) {
           className='profile-img borderImg box-shadow'
           src={
             user.userPic
-              ? `https://dev-book-server-vl45.onrender.com/uploads/images/${user.userPic}`
+              ? `https://dev-book-server-vl45.onrender.com/${user.userPic}`
               : defaultUserPic
           }
           alt=''
