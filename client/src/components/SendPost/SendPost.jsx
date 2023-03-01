@@ -17,7 +17,7 @@ import { SuggestionMode } from 'emoji-picker-react'
 function SendPost({ theme, setTheme, setPosts }) {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
-  console.log('This is send post user, mate:', user)
+
   const handleClick = () => {
     navigate(`/profile/${user._id}`)
   }
@@ -61,8 +61,11 @@ function SendPost({ theme, setTheme, setPosts }) {
         data: formData,
       }
       const { data } = await axios('api/posts', axiosConfig)
-      console.log(data)
-      setPosts((prev) => [data.data, ...prev])
+      console.log('Data recieved', data)
+      setPosts((prev) => {
+        console.log('State was updated with this as a data ', data)
+        return [data.data, ...prev]
+      })
     } catch (error) {
       console.log(error)
     }
