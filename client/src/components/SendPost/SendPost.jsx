@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import './SendPost.scss'
 import userImg from '../../assets/img/userImg.jpg'
 import SendBtn from '../Buttons/SendBtn'
@@ -10,7 +10,6 @@ import Picker from 'emoji-picker-react'
 import emojiIcon from '../../assets/img/emoji.png'
 import { Theme } from 'emoji-picker-react'
 import { SuggestionMode } from 'emoji-picker-react'
-import { useEffect } from 'react'
 // import ModalBG from '../SignInPage/Modal/ModalBG'
 // import ModalBGGreen from '../SignInPage/Modal/ModalBGGreen'
 // import WaveSvg from '../WaveSvg/WaveSvg'
@@ -18,9 +17,7 @@ import { useEffect } from 'react'
 function SendPost({ theme, setTheme, setPosts }) {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
-  useEffect(() => {
-    console.log('This is the user in the SendPost', post)
-  }, [user])
+
   const handleClick = () => {
     navigate(`/profile/${user._id}`)
   }
