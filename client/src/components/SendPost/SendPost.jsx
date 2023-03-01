@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './SendPost.scss'
 import userImg from '../../assets/img/userImg.jpg'
 import SendBtn from '../Buttons/SendBtn'
