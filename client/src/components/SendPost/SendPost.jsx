@@ -61,9 +61,9 @@ function SendPost({ theme, setTheme, setPosts }) {
         data: formData,
       }
       const { data } = await axios('api/posts', axiosConfig)
-      console.log('Data recieved', data)
+      console.log('Data recieved', data, typeof data)
       setPosts((prev) => {
-        console.log('State was updated with this as a data ', data)
+        console.log(`State was updated with this as a ${data} `, typeof data)
         return [data.data, ...prev]
       })
     } catch (error) {
