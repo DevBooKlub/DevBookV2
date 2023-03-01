@@ -98,8 +98,8 @@ function Post({
   }
   const [commentOpen, setCommentOpen] = useState(false)
 
-  const userPicURL = `${__URL_BASE__}${postAuthor.userPic}`
-  const postPicURL = `${__URL_BASE__}${image}`
+  const userPicURL = `https://dev-book-server-vl45.onrender.com/${postAuthor.userPic}`
+  const postPicURL = `https://dev-book-server-vl45.onrender.com/${image}`
 
   return (
     <div className='single-post-container backgroundInner box-shadow'>

@@ -41,7 +41,7 @@ function ProfileLargeComponent({ theme, setPosts }) {
           className='banner-img '
           src={
             userBanner
-              ? `${__URL_BASE__}${userBanner}`
+              ? `https://dev-book-server-vl45.onrender.com/${userBanner}`
               : theme === 'dark'
               ? banerImgDark
               : banerImgLight
@@ -52,7 +52,7 @@ function ProfileLargeComponent({ theme, setPosts }) {
         {userPic && (
           <img
             className='profile-img borderImg'
-            src={`${__URL_BASE__}${userPic}`}
+            src={`https://dev-book-server-vl45.onrender.com/${userPic}`}
             alt=''
           />
         )}
