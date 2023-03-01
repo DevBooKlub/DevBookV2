@@ -59,12 +59,18 @@ function Post({
     user.friends.find((friend) => friend._id === postAuthor._id)
 
   const handleAddRemoveFriend = async () => {
-    const { data } = await axios({
-      method: 'patch',
-      url: `https://dev-book-server-vl45.onrender.com/api/users/${postAuthor._id}`,
-    })
-    setUser(data.data)
+    try {
+      const { data } = await axios({
+        method: 'patch',
+        url: `https://dev-book-server-vl45.onrender.com/api/users/${postAuthor._id}`,
+      })
+      console.log('add remove user', data, typeof data)
+      setUser(data.data)
+    } catch (err) {
+      console.log(err)
+    }
   }
+
   const handleDelete = async () => {
     try {
       const res = await axios(
