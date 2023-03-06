@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import axios from 'axios'
 import './Home.scss'
-
 import Posts from '../Posts/Posts'
 import SendPost from '../SendPost/SendPost'
 import Swiper from '../Swiper/Swiper'

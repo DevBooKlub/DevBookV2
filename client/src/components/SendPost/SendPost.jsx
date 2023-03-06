@@ -31,7 +31,10 @@ function SendPost({ theme, setTheme, setPosts }) {
   })
 
   const onEmojiClick = (event, emojiObject) => {
-    setValue((prev) => ({ ...prev, desc: prev.desc.concat(emojiObject.emoji) }))
+    setValue((prev) => ({
+      ...prev,
+      desc: prev.desc.concat(emojiObject.emoji),
+    }))
     setShowPicker(false)
   }
 

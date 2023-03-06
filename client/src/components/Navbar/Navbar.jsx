@@ -11,14 +11,23 @@ import lightMode from '../../assets/img/lightmodeorange.png'
 import CurrentUser from './CurrentUser/CurrentUser'
 import logOutIcon from '../../assets/img/logout.png'
 import Dropdown from './Dropdown/Dropdown'
+import SearchBarDropdown from './SearchbarDropdown/SearchBarDropdown'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
 
-function Navbar({ theme, setTheme, props }) {
+function Navbar({
+  theme,
+  setTheme,
+  props,
+  openModal,
+  closeModal,
+  open,
+  setOpen,
+}) {
   const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  const [open, setOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(false)
 
   const [value, setValue] = useState('')
   const [isFocused, setIsFocused] = useState(false)
@@ -70,7 +79,7 @@ function Navbar({ theme, setTheme, props }) {
               onClick={handleClick}
             />
           </div>
-          <div className='nav-searchbar-box' style={{ position: 'relative' }}>
+          <div className='nav-searchbar-box'>
             <input
               className='searchbar box-shadow button-TextInput text'
               type='text'
@@ -81,75 +90,31 @@ function Navbar({ theme, setTheme, props }) {
               value={value}
             />
             {isFocused && (
-              <ul
-                style={{
-                  height: '20rem',
-                  width: '20rem',
-                  position: 'absolute',
-                  top: '5rem',
-                  left: '150%',
-                  zIndex: '100',
-                  listStyle: 'none',
-                }}
-              >
-                {user.friends
-                  .filter((e) => e.username.includes(value))
-                  .map((friend) => (
-                    <li
-                      style={{
-                        color: 'white',
-                        fontSize: '2rem',
-                        cursor: 'pointer',
-                      }}
-                      // onClick={handleNavigate(friend._id)}
-                      onClick={handleNavigate(friend._id)}
-                    >
-                      {friend.username}
-                    </li>
-                  ))}
-              </ul>
+              <SearchBarDropdown
+                user={user}
+                value={value}
+                handleNavigate={handleNavigate}
+              />
             )}
           </div>
         </div>
 
-        <div style={{ position: 'relative' }} className='nav-searchbar-box-sm '>
+        <div className='nav-searchbar-box-sm '>
           <input
             className='searchbar box-shadow button-TextInput text'
             type='text'
-            placeholder='# Exlopre'
+            placeholder='# Explore'
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
             value={value}
           />
           {isFocused && (
-            <ul
-              style={{
-                height: '20rem',
-                width: '20rem',
-                position: 'absolute',
-                top: '5rem',
-                left: '150%',
-                zIndex: '100',
-                listStyle: 'none',
-              }}
-            >
-              {user.friends
-                .filter((e) => e.username.includes(value))
-                .map((friend) => (
-                  <li
-                    style={{
-                      color: 'white',
-                      fontSize: '2rem',
-                      cursor: 'pointer',
-                    }}
-                    // onClick={handleNavigate(friend._id)}
-                    onClick={handleNavigate(friend._id)}
-                  >
-                    {friend.username}
-                  </li>
-                ))}
-            </ul>
+            <SearchBarDropdown
+              user={user}
+              value={value}
+              handleNavigate={handleNavigate}
+            />
           )}
         </div>
 
@@ -232,8 +197,23 @@ function Navbar({ theme, setTheme, props }) {
             </ul>
           </div>
 
-          <CurrentUser>
-            <Dropdown></Dropdown>
+          <CurrentUser
+            openDropdown={openDropdown}
+            setOpenDropdown={setOpenDropdown}
+            theme={theme}
+            setTheme={setTheme}
+          >
+            <Dropdown
+              openModal={openModal}
+              closeModal={closeModal}
+              open={open}
+              setOpen={setOpen}
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              theme={theme}
+              setTheme={setTheme}
+              handleLogout={handleLogout}
+            />
           </CurrentUser>
         </div>
       </div>
