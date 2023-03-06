@@ -3,16 +3,8 @@ import './Profile.scss'
 import UserProfileDetails from './UserProfileDetails'
 import EditProfile from './EditProfile/EditProfile'
 
-function Profile({ theme, setTheme }) {
-  const [open, setOpen] = useState(false)
-
-  const openModal = () => {
-    setOpen(true)
-  }
-
-  const closeModal = () => {
-    setOpen(false)
-  }
+function Profile({open, setOpen, theme, setTheme, openModal, closeModal }) {
+ 
 
   return (
     <div className='profile-container backgroundInner box-shadow'>

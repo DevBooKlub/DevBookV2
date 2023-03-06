@@ -59,15 +59,21 @@ function Post({
     user.friends.find((friend) => friend._id === postAuthor._id)
 
   const handleAddRemoveFriend = async () => {
-    const { data } = await axios({
-      method: 'patch',
-      url: `/api/users/${postAuthor._id}`,
-    })
-    setUser(data.data)
+    try {
+      const { data } = await axios({
+        method: 'patch',
+        url: `${__URL_BASE__}api/users/${postAuthor._id}`,
+        withCredentials: true,
+      })
+      setUser(data.data)
+    } catch (err) {
+      console.log(err)
+    }
   }
+
   const handleDelete = async () => {
     try {
-      const res = await axios(`/api/posts/${postID}`, {
+      const res = await axios(`${__URL_BASE__}api/posts/${postID}`, {
         method: 'DELETE',
         withCredentials: true,
       })
@@ -79,7 +85,7 @@ function Post({
 
   const handleLikeUnlike = async (evt) => {
     try {
-      const { data } = await axios(`/api/posts/${postID}`, {
+      const { data } = await axios(`${__URL_BASE__}api/posts/${postID}`, {
         method: 'PATCH',
         withCredentials: true,
       })
@@ -98,7 +104,7 @@ function Post({
   return (
     <div className='single-post-container backgroundInner box-shadow'>
       <div className='single-post-wraper'>
-      {/* <div className='modalbg-wrapper'>
+        {/* <div className='modalbg-wrapper'>
       {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
       <WaveSvg/>
           </div> */}
@@ -153,32 +159,42 @@ function Post({
           <img src={postPicURL} alt='' />
         </div>
         <div className='icons-bottom-likeby-wrapper'>
-        <div className='info-icons'>
-          <LikeButton
-            hasLiked={hasLiked}
-            handleLikeUnlike={handleLikeUnlike}
-            likesCount={likesCount}
-            theme={theme}
-          />
-          <div className='item' onClick={() => setCommentOpen(!commentOpen)}>
-            <img src={theme === 'dark' ? commentImgLight : commentImg} alt='' />
-            <p className='text'>Comment</p>
-          </div>
-          {user._id === postAuthor._id ? (
-            <div className='item' onClick={handleDelete}>
+          <div className='info-icons'>
+            <LikeButton
+              hasLiked={hasLiked}
+              handleLikeUnlike={handleLikeUnlike}
+              likesCount={likesCount}
+              theme={theme}
+            />
+            <div className='item' onClick={() => setCommentOpen(!commentOpen)}>
               <img
-                className={'visible'}
-                src={theme === 'dark' ? deletePostLight : deletePostDark}
+                src={theme === 'dark' ? commentImgLight : commentImg}
                 alt=''
-              />{' '}
-              <p className='text'>Delete</p>
+              />
+              <p className='text'>Comment</p>
             </div>
-          ) : null}
-          
+            {user._id === postAuthor._id ? (
+              <div className='item' onClick={handleDelete}>
+                <img
+                  className={'visible'}
+                  src={theme === 'dark' ? deletePostLight : deletePostDark}
+                  alt=''
+                />{' '}
+                <p className='text'>Delete</p>
+              </div>
+            ) : null}
+          </div>
+          <LikedBy theme={theme} likes={likes} likesCount={likesCount} />
         </div>
-        <LikedBy theme={theme} likes={likes} likesCount={likesCount} />
-        </div>
-        {commentOpen && <Comments theme={theme} setCommentOpen={setCommentOpen} commentOpen={commentOpen} comments={comments} postID={postID} />}
+        {commentOpen && (
+          <Comments
+            theme={theme}
+            setCommentOpen={setCommentOpen}
+            commentOpen={commentOpen}
+            comments={comments}
+            postID={postID}
+          />
+        )}
       </div>
     </div>
   )

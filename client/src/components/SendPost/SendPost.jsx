@@ -22,7 +22,6 @@ function SendPost({ theme, setTheme, setPosts }) {
     navigate(`/profile/${user._id}`)
   }
 
-
   const [showPicker, setShowPicker] = useState(false)
 
   const [image, setImage] = useState(undefined)
@@ -32,17 +31,16 @@ function SendPost({ theme, setTheme, setPosts }) {
   })
 
   const onEmojiClick = (event, emojiObject) => {
- setValue((prev) => ({...prev,desc: prev.desc.concat(emojiObject.emoji)}) )
+    setValue((prev) => ({
+      ...prev,
+      desc: prev.desc.concat(emojiObject.emoji),
+    }))
     setShowPicker(false)
   }
 
   const handleChange = (e) => {
     setValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
-
- 
-
-
 
   const fileChange = (e) => {
     setImage(e.target.files[0])
@@ -65,8 +63,11 @@ function SendPost({ theme, setTheme, setPosts }) {
         },
         data: formData,
       }
-      const { data } = await axios('api/posts', axiosConfig)
-      setPosts((prev) => [data.data, ...prev])
+      const req = await axios(`${__URL_BASE__}api/posts`, axiosConfig)
+      console.log(req)
+      setPosts((prev) => {
+        return [req.data.data, ...prev]
+      })
     } catch (error) {
       console.log(error)
     }
@@ -74,14 +75,14 @@ function SendPost({ theme, setTheme, setPosts }) {
 
   return (
     <div className='sendPost-container backgroundInner box-shadow'>
-       {/* <div className='modalbg-wrapper'>
+      {/* <div className='modalbg-wrapper'>
       {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
       <WaveSvg/>
           </div> */}
       <div className='user-img-container'>
         <img
           className='borderImg box-shadow'
-          src={user.userPic}
+          src={`${__URL_BASE__}${user.userPic}`}
           onClick={handleClick}
           alt=''
         />

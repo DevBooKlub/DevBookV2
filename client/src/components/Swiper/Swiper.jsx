@@ -60,15 +60,15 @@ export default function SwiperComponent({ theme, users }) {
           prevEl: '.image-swiper-button-prev',
           disabledClass: 'swiper-button-disabled',
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
       >
         {users.map((user) => (
           <SwiperSlide key={`swipper_${user._id}`}>
             <img
               onClick={handleClick(user._id)}
               className='user-img-swiper borderImg'
-              src={user.userPic}
+              src={`${__URL_BASE__}${user.userPic}`}
               alt=''
             />{' '}
             <p className='text'>{user.username}</p>

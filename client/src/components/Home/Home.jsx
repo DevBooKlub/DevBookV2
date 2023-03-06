@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import axios from 'axios'
 import './Home.scss'
-
 import Posts from '../Posts/Posts'
 import SendPost from '../SendPost/SendPost'
 import Swiper from '../Swiper/Swiper'
 
 const fetchAllUsers = async (setUsers) => {
   try {
-    const { data } = await axios('/api/users', {
+    const { data } = await axios(`${__URL_BASE__}api/users`, {
       method: 'GET',
       withCredentials: true,
     })

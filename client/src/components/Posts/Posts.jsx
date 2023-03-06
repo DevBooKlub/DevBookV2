@@ -5,7 +5,7 @@ import Post from './Post/Post'
 
 const getPosts = async (setPosts) => {
   try {
-    const { data } = await axios('/api/posts?page=1&items=50', {
+    const { data } = await axios(`${__URL_BASE__}api/posts?page=1&items=50`, {
       method: 'GET',
       withCredentials: true,
     })

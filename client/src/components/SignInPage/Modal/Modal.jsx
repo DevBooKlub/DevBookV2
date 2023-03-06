@@ -42,7 +42,7 @@ function Modal({ theme, setOpen }) {
     formData.append('confirm', value.confirm)
     formData.append('userPic', userPic)
     try {
-      const { data } = await axios('/api/register', {
+      const { data } = await axios(`${__URL_BASE__}api/register`, {
         method: 'POST',
         withCredentials: true,
         headers: {
@@ -87,30 +87,30 @@ function Modal({ theme, setOpen }) {
           <form action='' method='post' onSubmit={handleSubmit}>
             {/* <label htmlFor="name"><b>Name</b> */}
             <input
-              onChange={handleChange}
-              value={value.username}
               type='text'
               placeholder='Enter Full Name'
               name='username'
               id='username'
+              onChange={handleChange}
+              value={value.username}
             />
             {/* <label htmlFor="email"><b>Email</b> */}
             <input
-              onChange={handleChange}
-              value={value.email}
               type='text'
               placeholder='Enter Email'
               name='email'
               id='email'
+              onChange={handleChange}
+              value={value.email}
             />
             {/* <label htmlFor="psw"><b>Password</b> */}
             <input
-              onChange={handleChange}
-              value={value.password}
               type='password'
               placeholder='Enter Password'
               name='password'
               id='password'
+              onChange={handleChange}
+              value={value.password}
             />
             {/* <label htmlFor="psw-repeat"><b>Repeat Password</b> */}
             <input
