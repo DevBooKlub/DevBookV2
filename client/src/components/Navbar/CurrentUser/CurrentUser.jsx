@@ -4,14 +4,14 @@ import { useState } from 'react'
 
 import CurrentUserComponent from './CurrentUserComponent'
 
-function CurrentUser(props) {
+function CurrentUser({ openDropdown, setOpenDropdown,theme, setTheme, children}) {
 
-const [open, setOpen] = useState(false)
+
 
   return (
-    <div onClick={()=> setOpen(!open)} className='current-user-container box-shadow button-TextInput borderCurrentUser backgroundInner'>
+    <div onClick={()=> setOpenDropdown(!openDropdown)} className='current-user-container box-shadow button-TextInput borderCurrentUser backgroundInner'>
       <CurrentUserComponent  />
-{open && props.children}
+      {openDropdown && children}
       
 
       

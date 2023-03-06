@@ -91,6 +91,8 @@ function Modal({ theme, setOpen }) {
               placeholder="Enter Full Name"
               name="username"
               id="username"
+              onChange={handleChange}
+              value={value.username}
             />
             {/* <label htmlFor="email"><b>Email</b> */}
             <input
@@ -98,6 +100,8 @@ function Modal({ theme, setOpen }) {
               placeholder="Enter Email"
               name="email"
               id="email"
+              onChange={handleChange}
+              value={value.email}
             />
             {/* <label htmlFor="psw"><b>Password</b> */}
             <input
@@ -105,6 +109,8 @@ function Modal({ theme, setOpen }) {
               placeholder="Enter Password"
               name="password"
               id="password"
+              onChange={handleChange}
+              value={value.password}
             />
             {/* <label htmlFor="psw-repeat"><b>Repeat Password</b> */}
             <input
@@ -113,6 +119,7 @@ function Modal({ theme, setOpen }) {
               name="confirm"
               id="confirm"
               onChange={handleChange}
+              value={value.confirm}
             />
 
             <div className="add-img-wrapper">

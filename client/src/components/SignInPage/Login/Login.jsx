@@ -72,7 +72,7 @@ function Login({ open, setOpen }) {
         <input
           className='border box-shadow button-TextInput text '
           type='text'
-          placeholder='Login'
+          placeholder='Email'
           id='email'
           name='email'
           required={true}

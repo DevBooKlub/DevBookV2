@@ -9,7 +9,7 @@ const postSchema = new Schema(
     desc: {
       type: String,
       maxlength: [
-        100,
+        300,
         '{PATH} name must be between 100 or less characters long.',
       ],
       required: true,
