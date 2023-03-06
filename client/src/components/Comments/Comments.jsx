@@ -37,21 +37,18 @@ function Comments({
 
   const handleClick = async (evt) => {
     try {
-      const { data } = await axios(
-        `https://dev-book-server-vl45.onrender.com/api/comments/${postID}`,
-        {
-          method: 'POST',
-          withCredentials: true,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          data: {
-            text: value,
-            user: user._id,
-            post: postID,
-          },
-        }
-      )
+      const { data } = await axios(`${__URL_BASE__}api/comments/${postID}`, {
+        method: 'POST',
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          text: value,
+          user: user._id,
+          post: postID,
+        },
+      })
 
       setComment((prev) => [data.data, ...prev])
     } catch (err) {
@@ -68,7 +65,7 @@ function Comments({
       <div className='write-comment-container'>
         <img
           className='borderImg user-img'
-          src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
+          src={`${__URL_BASE__}${user.userPic}`}
           alt=''
         />
         <div className='input-box-comments'>

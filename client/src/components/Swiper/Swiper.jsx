@@ -68,7 +68,7 @@ export default function SwiperComponent({ theme, users }) {
             <img
               onClick={handleClick(user._id)}
               className='user-img-swiper borderImg'
-              src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
+              src={`${__URL_BASE__}${user.userPic}`}
               alt=''
             />{' '}
             <p className='text'>{user.username}</p>

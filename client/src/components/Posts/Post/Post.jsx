@@ -62,7 +62,7 @@ function Post({
     try {
       const { data } = await axios({
         method: 'patch',
-        url: `https://dev-book-server-vl45.onrender.com/api/users/${postAuthor._id}`,
+        url: `${__URL_BASE__}api/users/${postAuthor._id}`,
         withCredentials: true,
       })
       setUser(data.data)
@@ -73,13 +73,10 @@ function Post({
 
   const handleDelete = async () => {
     try {
-      const res = await axios(
-        `https://dev-book-server-vl45.onrender.com/api/posts/${postID}`,
-        {
-          method: 'DELETE',
-          withCredentials: true,
-        }
-      )
+      const res = await axios(`${__URL_BASE__}api/posts/${postID}`, {
+        method: 'DELETE',
+        withCredentials: true,
+      })
       if (res.status === 204) setPosts(posts.filter((e) => e._id !== postID))
     } catch (err) {
       console.log(err)
@@ -88,13 +85,10 @@ function Post({
 
   const handleLikeUnlike = async (evt) => {
     try {
-      const { data } = await axios(
-        `https://dev-book-server-vl45.onrender.com/api/posts/${postID}`,
-        {
-          method: 'PATCH',
-          withCredentials: true,
-        }
-      )
+      const { data } = await axios(`${__URL_BASE__}api/posts/${postID}`, {
+        method: 'PATCH',
+        withCredentials: true,
+      })
       setHasLiked(data.state)
       setLikesCount(data.data.numberOfLikes)
       setLikes(data.data.likes)
@@ -104,8 +98,8 @@ function Post({
   }
   const [commentOpen, setCommentOpen] = useState(false)
 
-  const userPicURL = `https://dev-book-server-vl45.onrender.com/${postAuthor.userPic}`
-  const postPicURL = `https://dev-book-server-vl45.onrender.com/${image}`
+  const userPicURL = `${__URL_BASE__}${postAuthor.userPic}`
+  const postPicURL = `${__URL_BASE__}${image}`
 
   return (
     <div className='single-post-container backgroundInner box-shadow'>

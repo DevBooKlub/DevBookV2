@@ -54,10 +54,7 @@ function EditProfile({ theme, setTheme, open, setOpen }) {
         data: formData,
       }
 
-      const { data } = await axios(
-        `https://dev-book-server-vl45.onrender.com/api/users/`,
-        axiosConfig
-      )
+      const { data } = await axios(`${__URL_BASE__}api/users/`, axiosConfig)
       setUser(data.data)
       closeModal()
     } catch (error) {

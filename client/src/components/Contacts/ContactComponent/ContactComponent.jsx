@@ -27,7 +27,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
   const removeFriend = async () => {
     const { data } = await axios({
       method: 'patch',
-      url: `https://dev-book-server-vl45.onrender.com/api/users/${friend._id}`,
+      url: `${__URL_BASE__}api/users/${friend._id}`,
       headers: { 'Content-Type': 'application/json' },
     })
     setUser(data.data)
@@ -39,7 +39,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
         <>
           <img
             className='contact-img borderImg'
-            src={`https://dev-book-server-vl45.onrender.com/${friend.userPic}`}
+            src={`${__URL_BASE__}${friend.userPic}`}
             alt=''
           />
           <h2 className='contact-name text'>{friend.username}</h2>

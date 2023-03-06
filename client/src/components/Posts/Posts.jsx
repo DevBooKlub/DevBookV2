@@ -5,13 +5,10 @@ import Post from './Post/Post'
 
 const getPosts = async (setPosts) => {
   try {
-    const { data } = await axios(
-      'https://dev-book-server-vl45.onrender.com/api/posts?page=1&items=50',
-      {
-        method: 'GET',
-        withCredentials: true,
-      }
-    )
+    const { data } = await axios(`${__URL_BASE__}api/posts?page=1&items=50`, {
+      method: 'GET',
+      withCredentials: true,
+    })
     setPosts(data.data)
   } catch (err) {
     console.error(err)

@@ -63,10 +63,7 @@ function SendPost({ theme, setTheme, setPosts }) {
         },
         data: formData,
       }
-      const req = await axios(
-        'https://dev-book-server-vl45.onrender.com/api/posts',
-        axiosConfig
-      )
+      const req = await axios(`${__URL_BASE__}api/posts`, axiosConfig)
       console.log(req)
       setPosts((prev) => {
         return [req.data.data, ...prev]
@@ -85,7 +82,7 @@ function SendPost({ theme, setTheme, setPosts }) {
       <div className='user-img-container'>
         <img
           className='borderImg box-shadow'
-          src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
+          src={`${__URL_BASE__}${user.userPic}`}
           onClick={handleClick}
           alt=''
         />

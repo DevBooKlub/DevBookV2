@@ -11,10 +11,7 @@ const axiosOptions = {
 
 const makeRequest = async (navigate, setUser) => {
   try {
-    const { data } = await axios(
-      'https://dev-book-server-vl45.onrender.com/api/verifyLogin',
-      axiosOptions
-    )
+    const { data } = await axios(`${__URL_BASE__}api/verifyLogin`, axiosOptions)
     setUser(data.data)
   } catch (err) {
     console.log(err)

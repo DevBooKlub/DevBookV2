@@ -54,7 +54,7 @@ function Navbar({
 
   const handleLogout = async () => {
     try {
-      await axios('https://dev-book-server-vl45.onrender.com/api/logout', {
+      await axios(`${__URL_BASE__}api/logout`, {
         method: 'DELETE',
         withCredentials: true,
       })

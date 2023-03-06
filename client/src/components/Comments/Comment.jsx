@@ -6,7 +6,7 @@ function Comment({ text, user, createdAt }) {
     <div className='comment'>
       <img
         className='borderImg'
-        src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
+        src={`${__URL_BASE__}${user.userPic}`}
         alt=''
       />
       <div className='user-info-comment'>

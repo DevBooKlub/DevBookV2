@@ -9,7 +9,7 @@ import banerImgDark from '../../assets/img/darkBanner.jpg'
 const fetchData = async (profileID, setProfile, navigate, setPosts) => {
   try {
     const { data } = await axios(
-      `https://dev-book-server-vl45.onrender.com/api/users/${profileID}?posts=true`,
+      `${__URL_BASE__}api/users/${profileID}?posts=true`,
       {
         method: 'GET',
         withCredentials: true,
@@ -41,7 +41,7 @@ function ProfileLargeComponent({ theme, setPosts }) {
           className='banner-img '
           src={
             userBanner
-              ? `https://dev-book-server-vl45.onrender.com/${userBanner}`
+              ? `${__URL_BASE__}${userBanner}`
               : theme === 'dark'
               ? banerImgDark
               : banerImgLight
@@ -52,7 +52,7 @@ function ProfileLargeComponent({ theme, setPosts }) {
         {userPic && (
           <img
             className='profile-img borderImg'
-            src={`https://dev-book-server-vl45.onrender.com/${userPic}`}
+            src={`${__URL_BASE__}${userPic}`}
             alt=''
           />
         )}

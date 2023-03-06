@@ -9,7 +9,7 @@ function CurrentUserComponent() {
     <>
       <img
         className='user-img-nav '
-        src={`https://dev-book-server-vl45.onrender.com/${user.userPic}`}
+        src={`${__URL_BASE__}${user.userPic}`}
         alt=''
       />
       <p className='user-name text'>{user.username}</p>

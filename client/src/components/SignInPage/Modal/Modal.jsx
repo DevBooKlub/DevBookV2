@@ -42,17 +42,14 @@ function Modal({ theme, setOpen }) {
     formData.append('confirm', value.confirm)
     formData.append('userPic', userPic)
     try {
-      const { data } = await axios(
-        'https://dev-book-server-vl45.onrender.com/api/register',
-        {
-          method: 'POST',
-          withCredentials: true,
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-          data: formData,
-        }
-      )
+      const { data } = await axios(`${__URL_BASE__}api/register`, {
+        method: 'POST',
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        data: formData,
+      })
 
       setUser(data.data)
       navigate('/')
