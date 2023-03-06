@@ -29,6 +29,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
       method: 'patch',
       url: `${__URL_BASE__}api/users/${friend._id}`,
       headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
     })
     setUser(data.data)
   }
