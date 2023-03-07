@@ -50,6 +50,10 @@ function SendPost({ theme, setTheme, setPosts }) {
   }
 
   const handlerSubmit = async (e) => {
+    setValue({
+      desc: '',
+      title: '',
+    })
     e.preventDefault()
     const formData = new FormData()
     // formData.append("title", post.title);
