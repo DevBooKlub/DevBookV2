@@ -44,20 +44,6 @@ export default function SwiperComponent({ theme, users }) {
             width: 640,
             slidesPerView: 4,
           },
-
-          768: {
-            width: 768,
-            slidesPerView: 5,
-          },
-          1220: {
-            width: 1228,
-            slidesPerView: 7,
-          },
-
-          1920:{
-            width: 1980,
-            slidesPerView: 8,
-          }
         }}
         spaceBetween={4}
         navigation={{
