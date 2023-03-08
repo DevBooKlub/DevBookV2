@@ -75,7 +75,7 @@ const [openDropdown, setOpenDropdown] = useState(false)
             <input
               className="searchbar box-shadow button-TextInput text"
               type="text"
-              placeholder="# Exlopre"
+              placeholder="# Find a friend"
               onChange={handleChange}
               onFocus={handleFocus}
               onBlur={handleBlur}

@@ -132,11 +132,18 @@
       @media (min-width: 2550px) and (max-width: 5559px) {
         font-size: 2.5rem;
       }
+      @media (min-width: 1920px) and (max-width: 2549px) {
+        font-size: 2.2rem;
+      }
     }
 
     .user-nickname {
       font-size: 1.3rem;
       margin-bottom: 1rem;
+
+      @media (min-width: 1920px) and (max-width: 2549px) {
+        font-size: 1.8rem;
+      }
       @media (min-width: 2550px) and (max-width: 5559px) {
         font-size: 1.7rem;
       }
@@ -147,6 +154,9 @@
       text-align: center;
       padding: 0px 20px;
       margin-top: 0rem;
+      @media (min-width: 1920px) and (max-width: 2549px) {
+        font-size: 1.6rem;
+      }
 
       @media (min-width: 2550px) and (max-width: 5559px) {
         font-size: 1.7rem;
