@@ -44,17 +44,8 @@ export default function SwiperComponent({ theme, users }) {
             width: 640,
             slidesPerView: 4,
           },
-
-          768: {
-            width: 768,
-            slidesPerView: 5,
-          },
-          1220: {
-            width: 768,
-            slidesPerView: 10,
-          },
         }}
-        spaceBetween={3}
+        spaceBetween={4}
         navigation={{
           nextEl: '.image-swiper-button-next',
           prevEl: '.image-swiper-button-prev',

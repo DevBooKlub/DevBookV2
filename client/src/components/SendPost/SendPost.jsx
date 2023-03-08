@@ -24,7 +24,7 @@ function SendPost({ theme, setTheme, setPosts }) {
 
   const [showPicker, setShowPicker] = useState(false)
 
-  const [image, setImage] = useState(undefined)
+  const [image, setImage] = useState(null)
   const [value, setValue] = useState({
     desc: '',
     title: '',
@@ -43,10 +43,17 @@ function SendPost({ theme, setTheme, setPosts }) {
   }
 
   const fileChange = (e) => {
-    setImage(e.target.files[0])
+    if (!e.target.files) return
+    const file = e.target.files[0]
+    if (!file.type.includes('image')) return
+    setImage(file)
   }
 
   const handlerSubmit = async (e) => {
+    setValue({
+      desc: '',
+      title: '',
+    })
     e.preventDefault()
     const formData = new FormData()
     // formData.append("title", post.title);
@@ -138,6 +145,7 @@ function SendPost({ theme, setTheme, setPosts }) {
 
         <div className='button-box'>
           <AddPhotoBtn
+            file={image}
             fileChange={fileChange}
             theme={theme}
             setTheme={setTheme}

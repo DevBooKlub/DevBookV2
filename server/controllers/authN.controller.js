@@ -28,7 +28,7 @@ const cookieOptions = {
   httpOnly: true,
   secure: NODE_ENV === 'production' ? true : false,
   maxAge: 30 * 24 * 60 * 60 * 1000,
-  sameSite: 'none',
+  sameSite: NODE_ENV === 'production' ? 'none' : 'lax',
 }
 const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body
@@ -52,16 +52,10 @@ const login = catchAsync(async (req, res, next) => {
   })
 })
 const logout = (req, res) => {
-  res
-    .status(204)
-    .clearCookie('access_token', {
-      httpOnly: true,
-      secure: NODE_ENV === 'production' ? true : false,
-    })
-    .json({
-      status: 'success',
-      data: null,
-    })
+  res.status(204).cookie('access_token', '', cookieOptions).json({
+    status: 'success',
+    data: null,
+  })
 }
 const verifyLogin = catchAsync(async (req, res) => {
   const { _id: id } = req.user

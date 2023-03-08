@@ -37,6 +37,7 @@ function Comments({
 
   const handleClick = async (evt) => {
     try {
+      setValue('')
       const { data } = await axios(`${__URL_BASE__}api/comments/${postID}`, {
         method: 'POST',
         withCredentials: true,

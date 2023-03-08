@@ -80,7 +80,7 @@ function Login({ open, setOpen }) {
         />
         <input
           className='border box-shadow button-TextInput text password-input'
-          type='text'
+          type='password'
           placeholder='Password'
           id='password'
           name='password'

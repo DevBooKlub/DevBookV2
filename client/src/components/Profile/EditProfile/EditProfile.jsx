@@ -12,6 +12,8 @@ import ModalBGGreen from '../../ModalBG/ModalBGGreen'
 
 function EditProfile({ theme, setTheme, open, setOpen }) {
   const { user, setUser } = useContext(AuthContext)
+  const [picFileName, setPicFileName] = useState(null)
+  const [bannerFileName, setBannerFileName] = useState(null)
 
   const closeModal = () => {
     setOpen(false)
@@ -31,8 +33,15 @@ function EditProfile({ theme, setTheme, open, setOpen }) {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
 
-  const fileChange = (e) => {
-    setImages((prev) => ({ ...prev, [e.target.name]: e.target.files[0] }))
+  const fileChange = (evt) => {
+    if (!evt.target.files) return
+    const file = evt.target.files[0]
+    const name = evt.target.name
+    if (!file.type.includes('image')) return
+    if (name === 'userBanner') setBannerFileName(file.name)
+    if (name === 'userPic') setPicFileName(file.name)
+
+    setImages((prev) => ({ ...prev, [name]: file }))
   }
 
   const handleSubmit = async (e) => {
@@ -132,7 +141,7 @@ function EditProfile({ theme, setTheme, open, setOpen }) {
                   onChange={fileChange}
                 />
                 <p className='AddImg-text' id='addImg'>
-                  Update Your Profile Picture
+                  {picFileName ?? 'Update Your Profile Picture'}
                 </p>
               </label>
             </div>
@@ -148,7 +157,7 @@ function EditProfile({ theme, setTheme, open, setOpen }) {
                   onChange={fileChange}
                 />
                 <p className='AddImg-text' id='addImg'>
-                  Update Your Profile Banner
+                  {bannerFileName ?? 'Update Your Profile Banner'}
                 </p>
               </label>
             </div>

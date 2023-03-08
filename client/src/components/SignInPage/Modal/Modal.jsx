@@ -14,6 +14,8 @@ import ModalBGGreen from '../../ModalBG/ModalBGGreen'
 function Modal({ theme, setOpen }) {
   const navigate = useNavigate()
   const { setUser } = useContext(AuthContext)
+  const [error, setError] = useState(false)
+
   const closeModal = () => {
     setOpen(false)
   }
@@ -25,12 +27,17 @@ function Modal({ theme, setOpen }) {
     confirm: '',
   })
   const [userPic, setUserPic] = useState()
+  const [fileName, setFilename] = useState(null)
 
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
   const fileChange = (e) => {
-    setUserPic(e.target.files[0])
+    if (!e.target.files) return
+    const file = e.target.files[0]
+    if (!file.type.includes('image')) return
+    setFilename(file.name)
+    setUserPic(file)
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -55,7 +62,10 @@ function Modal({ theme, setOpen }) {
       navigate('/')
       setOpen(false)
     } catch (error) {
-      console.log(error)
+      setError(true)
+      setTimeout(() => {
+        setError(false)
+      }, 1500)
     }
   }
 
@@ -133,7 +143,7 @@ function Modal({ theme, setOpen }) {
                   onChange={fileChange}
                 />
                 <p className='AddImg-text' id='addImg'>
-                  Add Your Profile Picture
+                  {fileName ?? 'Add Your Profile Picture'}
                 </p>
               </label>
             </div>
@@ -143,9 +153,15 @@ function Modal({ theme, setOpen }) {
               <a href='#'>Terms & Privacy</a>.
             </p> */}
 
-            <p onClick={closeModal} className='policy-text'>
-              Already have an account? <a href='#'>Sign in!</a>.
-            </p>
+            {error ? (
+              <p className='policy-text' style={{ color: 'red' }}>
+                Please enter valid credentials.
+              </p>
+            ) : (
+              <p onClick={closeModal} className='policy-text'>
+                Already have an account? <a href='#'>Sign in!</a>.
+              </p>
+            )}
             <button
               type='submit'
               className='register-button-create-accout text border button-TextInput'
