@@ -16,14 +16,12 @@
     min-height: 4rem;
   }
 
- 
   .swiper-slide {
     display: flex;
     flex-direction: column;
     height: 10rem;
     opacity: 1;
-    
-    
+
     @media (min-width: 350px) and (max-width: 800px) {
       max-height: 5rem;
       min-height: 5rem;
@@ -49,6 +47,7 @@
     .user-img-swiper {
       width: 5.2rem;
       height: 5.2rem;
+      object-fit: cover;
 
       @media (min-width: 350px) and (max-width: 800px) {
         width: 4rem;
