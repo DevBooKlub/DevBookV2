@@ -46,7 +46,7 @@ function Login({ open, setOpen }) {
     }
     try {
       const { data } = await axios(
-        '/api/login?friends=true&posts=true',
+        `${__URL_BASE__}api/login?friends=true&posts=true`,
         axiosConfig
       )
       setUser(data.data)
@@ -72,15 +72,15 @@ function Login({ open, setOpen }) {
         <input
           className='border box-shadow button-TextInput text '
           type='text'
-          placeholder='Login'
+          placeholder='Email'
           id='email'
           name='email'
           required={true}
           onChange={handleChange}
         />
         <input
-          className='border box-shadow button-TextInput text '
-          type='text'
+          className='border box-shadow button-TextInput text password-input'
+          type='password'
           placeholder='Password'
           id='password'
           name='password'
@@ -95,9 +95,7 @@ function Login({ open, setOpen }) {
           Sign In!
         </button>
         {loginStatus ? (
-          <div className='sign-in-error'>
-            Username or password was incorrect
-          </div>
+          <div className='sign-in-error'>Email or Password was Incorrect</div>
         ) : null}
       </form>
 

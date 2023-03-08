@@ -3,10 +3,10 @@ import './LeftSection.scss'
 import Profile from '../../Profile/Profile'
 import Rooms from '../../Rooms/Rooms'
 
-function LeftSection({ theme, setTheme }) {
+function LeftSection({open, setOpen, theme, setTheme, openModal, closeModal }) {
   return (
     <div className='left-section-container'>
-      <Profile theme={theme} setTheme={setTheme} />
+      <Profile openModal={openModal} closeModal={closeModal} open={open} setOpen={setOpen} theme={theme} setTheme={setTheme} />
       <Rooms theme={theme} setTheme={setTheme} />
     </div>
   )

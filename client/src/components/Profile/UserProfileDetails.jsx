@@ -22,7 +22,7 @@ function UserProfileDetails({ theme, setTheme }) {
           className='banner-img'
           src={
             user.userBanner
-              ? user.userBanner
+              ? `${__URL_BASE__}${user.userBanner}`
               : theme === 'dark'
               ? banerImgDark
               : banerImgLight
@@ -33,7 +33,7 @@ function UserProfileDetails({ theme, setTheme }) {
         <img
           onClick={handleClick}
           className='profile-img borderImg box-shadow'
-          src={user.userPic ? user.userPic : defaultUserPic}
+          src={user.userPic ? `${__URL_BASE__}${user.userPic}` : defaultUserPic}
           alt=''
         />
       </div>

@@ -7,7 +7,9 @@
   height: 3.5rem;
   cursor: pointer;
   margin-left: 3rem;
+  
   @media (min-width: 1432px) and (max-width: 8919px) {
+    position: relative;
 
   }
 
@@ -31,10 +33,10 @@
   //   min-width: 2rem;
   // }
 
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.1s ease-in-out;
-  }
+  // &:hover {
+  //   transform: scale(1.1);
+  //   transition: 0.1s ease-in-out;
+  // }
 
   .user-img-nav {
     width: 2.2rem;

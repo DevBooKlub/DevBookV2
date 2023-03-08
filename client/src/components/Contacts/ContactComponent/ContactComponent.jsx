@@ -4,6 +4,7 @@ import { AuthContext } from '../../../context/authContext'
 import { useNavigate } from 'react-router-dom'
 import closeIconRed from '../../../assets/img/removeContact.png'
 import removeContactLight from '../../../assets/img/removeContactLight.png'
+import chatDark from '../../../assets/img/chatDark.png'
 import axios from 'axios'
 
 function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
@@ -26,8 +27,9 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
   const removeFriend = async () => {
     const { data } = await axios({
       method: 'patch',
-      url: `/api/users/${friend._id}`,
+      url: `${__URL_BASE__}api/users/${friend._id}`,
       headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
     })
     setUser(data.data)
   }
@@ -47,7 +49,7 @@ function ContactComponent({ theme, friend, setTheme, open, setOpen }) {
       <div className='contact-icons-container'>
         {/* <img
           onClick={true ? openModal : closeModal}
-          src={theme === "dark" ? chat : chatDark}
+          src={chatDark}
           alt=""
         /> */}
         <img

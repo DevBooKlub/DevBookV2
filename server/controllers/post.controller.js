@@ -15,9 +15,12 @@ const createPost = catchAsync(async (req, res) => {
     title,
     image,
   })
-  const query = await document.populate({
+  let query = await document.populate({
     path: 'user',
     select: 'username userPic userBanner nickname',
+  })
+  query = await document.populate({
+    path: 'comments',
   })
   const data = await query.save()
 

@@ -13,13 +13,24 @@ import { AuthContext } from '../../context/authContext'
 function Layout() {
   const [theme, setTheme] = useState('dark')
   const { user } = useContext(AuthContext)
+  const [open, setOpen] = useState(false)
+
+  const openModal = () => {
+    setOpen(true)
+  }
+
+  const closeModal = () => {
+    setOpen(false)
+  }
+
   return (
     <div className={theme}>
       {user && (
         <div className='main background box-shadow'>
-          <Navbar theme={theme} setTheme={setTheme} />
+          <Navbar theme={theme} setTheme={setTheme} openModal={openModal} closeModal={closeModal} open={open} setOpen={setOpen} />
+
           <div className='main-layout-container'>
-            <LeftSection theme={theme} setTheme={setTheme} />
+            <LeftSection openModal={openModal} closeModal={closeModal} open={open} setOpen={setOpen} theme={theme} setTheme={setTheme} />
             <Outlet context={[theme]} />
             <RightSection theme={theme} setTheme={setTheme} />
           </div>

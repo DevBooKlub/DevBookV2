@@ -7,7 +7,11 @@ function CurrentUserComponent() {
 
   return (
     <>
-      <img className='user-img-nav ' src={user.userPic} alt='' />
+      <img
+        className='user-img-nav '
+        src={`${__URL_BASE__}${user.userPic}`}
+        alt=''
+      />
       <p className='user-name text'>{user.username}</p>
     </>
   )

@@ -11,7 +11,7 @@ const axiosOptions = {
 
 const makeRequest = async (navigate, setUser) => {
   try {
-    const { data } = await axios('/api/verifyLogin', axiosOptions)
+    const { data } = await axios(`${__URL_BASE__}api/verifyLogin`, axiosOptions)
     setUser(data.data)
   } catch (err) {
     console.log(err)

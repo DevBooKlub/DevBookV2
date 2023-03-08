@@ -10,6 +10,9 @@ import Picker from 'emoji-picker-react'
 import emojiIcon from '../../assets/img/emoji.png'
 import { Theme } from 'emoji-picker-react'
 import { SuggestionMode } from 'emoji-picker-react'
+// import ModalBG from '../SignInPage/Modal/ModalBG'
+// import ModalBGGreen from '../SignInPage/Modal/ModalBGGreen'
+// import WaveSvg from '../WaveSvg/WaveSvg'
 
 function SendPost({ theme, setTheme, setPosts }) {
   const navigate = useNavigate()
@@ -19,17 +22,19 @@ function SendPost({ theme, setTheme, setPosts }) {
     navigate(`/profile/${user._id}`)
   }
 
-
   const [showPicker, setShowPicker] = useState(false)
 
-  const [image, setImage] = useState(undefined)
+  const [image, setImage] = useState(null)
   const [value, setValue] = useState({
     desc: '',
     title: '',
   })
 
   const onEmojiClick = (event, emojiObject) => {
- setValue((prev) => ({...prev,desc: prev.desc.concat(emojiObject.emoji)}) )
+    setValue((prev) => ({
+      ...prev,
+      desc: prev.desc.concat(emojiObject.emoji),
+    }))
     setShowPicker(false)
   }
 
@@ -37,19 +42,18 @@ function SendPost({ theme, setTheme, setPosts }) {
     setValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleEmoji = (e) => {
-    setInputStr(e.target.value)
-  }
-
-  const doubleFunction = () => {
-    handleEmoji()
-  }
-
   const fileChange = (e) => {
-    setImage(e.target.files[0])
+    if (!e.target.files) return
+    const file = e.target.files[0]
+    if (!file.type.includes('image')) return
+    setImage(file)
   }
 
   const handlerSubmit = async (e) => {
+    setValue({
+      desc: '',
+      title: '',
+    })
     e.preventDefault()
     const formData = new FormData()
     // formData.append("title", post.title);
@@ -66,8 +70,11 @@ function SendPost({ theme, setTheme, setPosts }) {
         },
         data: formData,
       }
-      const { data } = await axios('api/posts', axiosConfig)
-      setPosts((prev) => [data.data, ...prev])
+      const req = await axios(`${__URL_BASE__}api/posts`, axiosConfig)
+      console.log(req)
+      setPosts((prev) => {
+        return [req.data.data, ...prev]
+      })
     } catch (error) {
       console.log(error)
     }
@@ -75,10 +82,14 @@ function SendPost({ theme, setTheme, setPosts }) {
 
   return (
     <div className='sendPost-container backgroundInner box-shadow'>
+      {/* <div className='modalbg-wrapper'>
+      {theme === "dark" ? <ModalBG/> : <ModalBGGreen/>}
+      <WaveSvg/>
+          </div> */}
       <div className='user-img-container'>
         <img
           className='borderImg box-shadow'
-          src={user.userPic}
+          src={`${__URL_BASE__}${user.userPic}`}
           onClick={handleClick}
           alt=''
         />
@@ -134,6 +145,7 @@ function SendPost({ theme, setTheme, setPosts }) {
 
         <div className='button-box'>
           <AddPhotoBtn
+            file={image}
             fileChange={fileChange}
             theme={theme}
             setTheme={setTheme}

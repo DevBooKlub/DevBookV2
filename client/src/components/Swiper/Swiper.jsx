@@ -44,31 +44,22 @@ export default function SwiperComponent({ theme, users }) {
             width: 640,
             slidesPerView: 4,
           },
-
-          768: {
-            width: 768,
-            slidesPerView: 5,
-          },
-          1220: {
-            width: 768,
-            slidesPerView: 10,
-          },
         }}
-        spaceBetween={3}
+        spaceBetween={4}
         navigation={{
           nextEl: '.image-swiper-button-next',
           prevEl: '.image-swiper-button-prev',
           disabledClass: 'swiper-button-disabled',
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
       >
         {users.map((user) => (
           <SwiperSlide key={`swipper_${user._id}`}>
             <img
               onClick={handleClick(user._id)}
               className='user-img-swiper borderImg'
-              src={user.userPic}
+              src={`${__URL_BASE__}${user.userPic}`}
               alt=''
             />{' '}
             <p className='text'>{user.username}</p>

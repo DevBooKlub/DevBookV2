@@ -1,16 +1,65 @@
+@import "../../variables/variables.scss";
+
 .comments-container {
+  .comments-border {
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .close-comment{
+    width:100%;
+    display: flex;
+    justify-content: center;
+
+    img{
+      width:2rem;
+      height: 2rem;
+      border-radius: 0px;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.1s ease-in-out;
+        cursor: pointer;
+      }
+
+    }
+  }
+
   .write-comment-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
     margin: 2rem 0px;
+   
 
+    .user-img{
+     min-width: 4rem;
+      height: 4rem;
+    }
+
+    .input-box-comments{
+      width: 100%;
+      position: relative;
     input {
       width: 100%;
       padding: 0.4rem;
       border-radius: 5px;
       border: none;
+      
+      
+    }
+
+    .emoji-icon-btn-comments {
+      position: absolute;
+      width: 1.5rem;
+      height: 1.5rem;
+      right: 0.8rem;
+        bottom: 0.4rem;
+        cursor: pointer;
+      
+    }
+     
     }
 
     button {
@@ -22,9 +71,6 @@
       align-items: center;
       justify-content: space-around;
       width: 9rem;
-
-    
-      
 
       &:hover {
         transform: scale(1.1);
@@ -45,6 +91,8 @@
     margin: 3rem 0px;
     display: flex;
     justify-content: space-between;
+    // border: 1px solid green;
+    max-width: 100%;
 
     .user-info-comment {
       flex: 5;
@@ -52,23 +100,43 @@
       flex-direction: column;
       margin-left: 1rem;
       align-items: flex-start;
+      // border: 1px solid red;
+      
+      max-width: 80%;
 
       span {
-        font-weight: bold;
+        display: flex;
+        top: 2rem;
+        overflow-y: scroll;
+        overflow: hidden;
+        display: flex;
+        max-width: 100%;
+        max-height: 50rem;
+        // border: 1px solid red;
+        flex-wrap: wrap;
+        text-align: left;
+        word-wrap: normal;
         font-size: 1.4rem;
       }
 
       p {
-        margin-top: 5px;
+        font-weight: bold;
+        margin-bottom: 0.6rem;
         font-size: 1.5rem;
       }
     }
 
-    .date {
-      flex: 1;
-      align-self: center;
-      font-size: 1.1rem;
-      margin-left: 1rem;
+    ul {
+      display: flex;
+      width: 20%;
+      justify-content: right;
+
+      .date {
+        
+        align-self: center;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+      }
     }
   }
 }
