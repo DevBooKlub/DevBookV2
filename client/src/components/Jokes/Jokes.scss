@@ -8,10 +8,11 @@
   border-radius: 20px;
   overflow: hidden;
  
-  max-height: 30rem;
+  max-height: 32rem;
+  min-height: 30rem;
  
   @media (min-width: 1920px) and (max-width: 2559px) {
-    max-height: 35rem;
+    max-height: 34rem;
   }
 
   .card-title {
@@ -36,8 +37,10 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    position: relative;    
-   
+    position: relative;   
+    justify-content: center;
+  
+  
 
 .joke-content{
   display: flex;
@@ -61,9 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    
-    bottom: 2rem;
+  
 
     .joke-btn{
       padding: 0.8rem;
@@ -74,6 +75,7 @@
       align-items: center;
       justify-content: space-around;
       width: 9rem;
+      margin-top: 6rem;
 
     }
       

@@ -12,7 +12,7 @@ function RightSection({theme, setTheme}) {
       <Contacts theme={theme} setTheme={setTheme} />
       <div className="radio-tabletView-wrapper"><Radio theme={theme} setTheme={setTheme}/></div>
       
-      {/* <Jokes /> */}
+      <Jokes />
     </div>
   );
 }
