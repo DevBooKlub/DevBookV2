@@ -45,7 +45,7 @@ npm run dev
 * Implement a chat feature that enables users to engage in direct communication with each other.
 * Develop a "Stories" feature that allows users to create and share short-term visual content, such as photos and videos, with their followers.
 
-### Contributers
+## Contributers
 
 * https://github.com/IwoDNB
 * https://github.com/slavyspasoff
